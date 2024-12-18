@@ -1,0 +1,101 @@
+<% if (isAdmin) { %>
+<aside>
+    <div class="toggle">
+        <div class="logo">
+            <img src="../images/StudyHub.jpg" alt="Company logo">
+            <h2>Study<span class="success">Hub</span></h2>
+        </div>
+        <div class="close" id="close-btn">
+            <span class="material-icons-sharp">
+                close
+            </span>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <a href="/" class="<%= currentPage === 'index' ? 'active' : '' %>">
+            <span class="material-icons-sharp">
+                home
+            </span>
+            <h3>Página principal</h3>
+        </a>
+        <a href="/profile" class="<%= currentPage === 'profile' ? 'active' : '' %>">
+            <span class="material-icons-sharp">
+                person_outline
+            </span>
+            <h3>Perfil</h3>
+        </a>
+        <a href="/messages" class="<%= currentPage === 'messages' || currentPage === 'publication' || currentPage === 'resources' ? 'active' : '' %>">
+            <span class="material-icons-sharp">
+                chat
+            </span>
+            <h3>Chat</h3>
+        </a>
+        <a href="/dashboard" class="<%= currentPage === 'dashboard' ? 'active' : '' %>">
+            <span class="material-icons-sharp">
+                dashboard
+            </span>
+            <h3>Panel de administración</h3>
+        </a>
+        <a href="/dashboard/users" class="<%= currentPage === 'users' ? 'active' : '' %>">
+            <span class="material-icons-sharp">
+                group
+            </span>
+            <h3>Usuarios</h3>
+        </a>
+        <a href="/dashboard/alertas" class="<%= currentPage === 'alertas' ? 'active' : '' %>">
+            <span class="material-icons-sharp">
+                mail_outline
+            </span>
+            <h3>Alertas</h3>
+            <span class="message-count">27</span>
+        </a>
+        <a href="/dashboard/reportedUsers" class="<%= currentPage === 'reportedUsers' ? 'active' : '' %>">
+            <span class="material-icons-sharp">
+                report_gmailerrorred
+            </span>
+            <h3>Usuarios reportados</h3>
+        </a>
+        <a>
+        </a>
+    </div>
+</aside>
+<% } else { %>
+<aside>
+<div class="toggle">
+    <div class="logo">
+        <img src="../images/StudyHub.jpg" alt="Company logo">
+        <h2>Study<span class="success">Hub</span></h2>
+    </div>
+    <div class="close" id="close-btn">
+        <span class="material-icons-sharp">
+            close
+        </span>
+    </div>
+</div>
+
+<div class="sidebar">
+    <a href="/" class="<%= currentPage === 'index' ? 'active' : '' %>">
+        <span class="material-icons-sharp">
+            home
+        </span>
+        <h3>Página principal</h3>
+    </a>
+    <a href="/profile" class="<%= currentPage === 'chat' ? 'active' : '' %>">
+        <span class="material-icons-sharp">
+            person_outline
+        </span>
+        <h3>Perfil</h3>
+    </a>
+    <a href="/messages" class="<%= currentPage === 'profile' || currentPage === 'publication' || currentPage === 'resources' ? 'active' : '' %>">
+        <span class="material-icons-sharp">
+            chat
+        </span>
+        <h3>Chat</h3>
+    </a>
+    </a>
+    <a>     
+    </a>
+</div>
+</aside>
+<% } %>

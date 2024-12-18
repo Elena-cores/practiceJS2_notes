@@ -1,0 +1,45 @@
+#cookie-popup {
+    position: fixed; /* Posiciona el popup relativo a la ventana */
+    bottom: 20px; /* A 20px desde el fondo de la pantalla */
+    left: 50%; /* Centra el popup horizontalmente */
+    transform: translateX(-50%); /* Ajusta el centro real horizontal */
+    background: #fff; /* Fondo blanco */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para efecto flotante */
+    z-index: 1000; /* Asegura que esté sobre otros elementos */
+    text-align: center; /* Centra el texto dentro del popup */
+    width: 90%; /* Ancho relativo al viewport */
+    max-width: 400px; /* Ancho máximo para pantallas grandes */
+  }
+  
+  #cookie-popup p {
+    margin-bottom: 20px; /* Espaciado inferior del texto */
+    font-size: 14px; /* Tamaño del texto */
+    color: #333; /* Color del texto */
+  }
+  
+  #cookie-popup button {
+    background-color: #1d72b8; /* Azul para el botón Aceptar */
+    color: white; /* Texto blanco */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Tamaño del botón */
+    margin: 0 5px; /* Separación entre botones */
+    cursor: pointer; /* Cambia a manito al pasar el mouse */
+    font-size: 16px; /* Tamaño del texto del botón */
+    transition: background-color 0.3s ease; /* Animación en hover */
+  }
+  
+  #cookie-popup button:hover {
+    background-color: #155a8a; /* Azul más oscuro al pasar el mouse */
+  }
+  
+  #cookie-popup button#reject-cookies {
+    background-color: #555; /* Gris oscuro para el botón Rechazar */
+  }
+  
+  #cookie-popup button#reject-cookies:hover {
+    background-color: #333; /* Gris más oscuro al pasar el mouse */
+  }
+  

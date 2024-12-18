@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    
+    <link rel="icon" type="image/x-icon" href="../images/StudyHub.ico">
+    <title>Usuarios</title>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Sidebar Section -->
+    <aside>
+      <div class="toggle">
+        <div class="logo">
+          <img src="../images/StudyHub.png">
+          <h2>Study<span class="success">Hub</span></h2>
+        </div>
+        <div class="close" id="close-btn">
+          <span class="material-icons-sharp">
+            close
+          </span>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <a href="dashboard.html">
+          <span class="material-icons-sharp">
+            dashboard
+          </span>
+          <h3>Panel de administración</h3>
+        </a>
+        <a href="users.html" class="active">
+          <span class="material-icons-sharp">
+              person_outline
+          </span>
+          <h3>Usuarios</h3>
+        </a>
+        <a href="history.html">
+          <span class="material-icons-sharp">
+            receipt_long
+          </span>
+          <h3>Historial</h3>
+        </a>
+        <a href="#">
+          <span class="material-icons-sharp">
+            insights
+          </span>
+          <h3>Analíticas</h3>
+        </a>
+        <a href="alertas.html">
+          <span class="material-icons-sharp">
+            mail_outline
+          </span>
+          <h3>Alertas</h3>
+          <span class="message-count">27</span>
+        </a>
+        <a href="#">
+          <span class="material-icons-sharp">
+            inventory
+          </span>
+          <h3>Historial de ventas</h3>
+        </a>
+        <a href="reportedUsers.html">
+          <span class="material-icons-sharp">
+              report_gmailerrorred
+          </span>
+          <h3>Usuarios reportados</h3>
+        </a>
+        <a href="#">
+            <span class="material-icons-sharp">
+              add
+            </span>
+            <h3>Añadir cuenta</h3>
+        </a>
+        <a href="#">
+          <span class="material-icons-sharp">
+            logout
+          </span>
+          <h3>Cerrar sesión</h3>
+        </a>
+      </div>
+    </aside>
+
+      <!-- Main Content -->
+      <main>
+          <h1>Usuarios</h1>
+          <br>
+          <h2>Lista de Usuarios</h2>
+          <div class="list">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nombre de usuario</th>
+                  <th>Correo</th>
+                  <th>Alertas</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+      </main>
+
+      <!-- Right Section -->
+      <div class="right-section">
+        <div class="nav">
+          <button id="menu-btn">
+            <span class="material-icons-sharp">
+                menu
+            </span>
+          </button>
+          <div class="dark-mode">
+              <span class="material-icons-sharp active">
+                  light_mode
+              </span>
+              <span class="material-icons-sharp">
+                  dark_mode
+              </span>
+          </div>
+
+          <div class="profile">
+            <div class="info">
+              <p>Hola, <b>Carlos</b></p>
+              <small class="text-muted">Admin</small>
+            </div>
+            <div class="profile-photo">
+              <img src="../images/users/9.jpg">
+            </div>
+          </div>
+
+        </div>
+        <!-- End of Nav -->
+
+        <div class="user-profile">
+          <div class="logo">
+            <img src="../images/StudyHub_rectangular.png">
+            <h2>CEU Study Hub</h2>
+            <p>Tu mejor aliado en la uni</p>
+          </div>
+        </div>
+
+        <div class="reminders">
+          <div class="header">
+            <h2>Reminders</h2>
+            <span class="material-icons-sharp">
+              notifications_none
+            </span>
+          </div>
+
+          <div class="notification">
+            <div class="icon">
+              <span class="material-icons-sharp">
+                volume_up
+              </span>
+            </div>
+            <div class="content">
+              <div class="info">
+                <h3>Workshop</h3>
+                <small class="text_muted">
+                  08:00 AM - 12:00 PM
+                </small>
+              </div>
+                <span class="material-icons-sharp">
+                    more_vert
+                </span>
+            </div>
+          </div>
+
+          <div class="notification deactive">
+            <div class="icon">
+              <span class="material-icons-sharp">
+                edit
+              </span>
+            </div>
+            <div class="content">
+              <div class="info">
+                <h3>Workshop</h3>
+                <small class="text_muted">
+                  08:00 AM - 12:00 PM
+                </small>
+              </div>
+              <span class="material-icons-sharp">
+                more_vert
+              </span>
+            </div>
+          </div>
+
+          <div class="notification add-reminder">
+            <div>
+              <span class="material-icons-sharp">
+                add
+              </span>
+              <h3>Add Reminder</h3>
+            </div>
+          </div>
+
+        </div>
+      </div>
+  </div>
+
+  <script src="../js/users.js"></script>
+  <script src="../js/index.js"></script>
+</body>
+
+</html>

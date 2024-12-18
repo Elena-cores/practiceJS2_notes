@@ -1,0 +1,54 @@
+/*Aqui ira el css de las paginas que proximamente seran pop ups (reset_Password, Register y Login) parece que edit profile tambien usa este css*/
+
+.form-section {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #6c63ff;
+  }
+  
+  .form p {
+    text-align: center;
+    color: #ccc;
+    margin-bottom: 10px;
+  }
+  
+  .form label {
+    margin: 10px 0 5px;
+    font-size: 1rem;
+    color: #ccc;
+  }
+  
+  .form input[type="text"],
+  .form input[type="email"],
+  .form input[type="password"] {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+  
+  .form input[type="text"]:focus,
+  .form input[type="email"]:focus,
+  .form input[type="password"]:focus {
+    outline: none;
+    border-color: #6c63ff;
+  }
+

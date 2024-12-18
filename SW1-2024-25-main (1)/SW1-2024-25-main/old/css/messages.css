@@ -1,0 +1,130 @@
+/*estilos del contenedor del chat*/
+.chat-container {
+    display: flex;
+    height: 73.8vh;
+    width: 100%;
+    margin: auto;
+    background: #333;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+.chat-section {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.message {
+    margin: 5px 0; 
+    padding: 8px; 
+    border-radius: 10px;
+    max-width: 80%;
+}
+  
+.message.sender {
+    align-self: flex-end; 
+    margin-left: auto; 
+    box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.36);
+}
+  
+.message.receiver {
+    align-self: flex-start; 
+    margin-right: auto; 
+    box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.308);
+}
+
+.message-time {
+    font-size: 0.6em; 
+    display: block; 
+    margin-bottom: 4px; 
+    text-align: right;
+}
+
+/* Contenedor de entrada de chat */
+#chat-input-container {
+    background: #040408;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 1px;
+    color: white; 
+    width: 60.65%;
+    margin: -60px ;
+    height: 50px;
+    position:absolute;
+    bottom: 30px;
+    right: 190px;
+    }
+
+.chat-input {
+    padding: 8px; 
+    border-radius: 10px;
+    border: none;
+    margin-right: 10px;
+    height: 50px;
+    width: 770px;
+    color: white; 
+    font-size: 20px;
+    flex-grow: 1;
+}
+    
+.chat-button {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    border-top: 20px;
+    cursor: pointer;
+    height: 50px;
+    width: 15%;
+    font-size: 17px;
+}
+
+/* lista de chats */
+.chat-list {
+    align-self: left;
+    width: 30%;
+    height: 800px;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 10px;
+    flex-direction: column;
+    overflow-y: auto;
+    display: inline-block;
+  }
+
+.chat-item {
+    background: rgba(0, 0, 0, 0.438);
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.chat-item:hover {
+    background: #6c63ff;
+}
+
+.profile-pic {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Sección superior del chat */
+.top-section-chat {
+    text-align: center; 
+    padding: 10px;
+    position: sticky; 
+    top: 0;
+    border-radius: 10px;
+}  
+

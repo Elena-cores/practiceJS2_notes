@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/nuevaPublicacion.css"> 
+    <title>Registrar Producto</title>
+</head>
+<body>
+    <!-- Botón para volver a la página de perfil -->
+    <a href="/<%= from %>" class="volver-boton">← Volver a <%= from === 'perfil' ? 'perfil' : 'listado' %></a>
+
+    <h1>Registrar Producto</h1>
+
+    <form action="/nuevaPublicacion" method="POST">
+        <label for="title">Título del producto:</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="description">Descripción:</label>
+        <textarea id="description" name="description" required></textarea>
+      
+        <label for="price">Precio:</label>
+        <input type="number" id="price" name="price" step="0.01" required>
+      
+        <label for="state">Estado:</label>
+        <select id="state" name="state">
+          <option value="Disponible">Disponible</option>
+          <option value="Reservado">Reservado</option>
+        </select>
+      
+        <label for="university">Universidad:</label>
+        <select id="university" name="university" required>
+            <option value="Ninguna">Ninguna</option>
+            <option value="CEU">CEU</option>
+            <option value="UCM">UCM</option>
+            <option value="UPM">UPM</option>
+        </select>
+      
+        <button type="submit">Crear Publicación</button>
+    </form>
+</body>
+</html>

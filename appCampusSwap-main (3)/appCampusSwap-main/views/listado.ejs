@@ -1,0 +1,136 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Swap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/listado.css">
+    <link rel="stylesheet" href="/stylesheets/popUp.css">
+</head>
+<body>
+    <header>
+        <!-- Encabezado de la página -->
+        <div class="logo">
+            <img src="/images/logoFinal.png" alt="Logo Campus Swap" />
+        </div>
+        <div class="header-title">Campus Swap</div>
+        <a href="/about" class="btn">Sobre Nosotros</a>
+        <div class="profile">
+            <img src="/images/profile.png" alt="Ícono de perfil" class="profile-icon" onclick="toggleDropdown()" />
+            <div id="profileDropdown" class="dropdown-content">
+                <a href="/perfil">Configuración de cuenta</a>
+                <a href="/buzon">Mensajería</a>
+                <a href="/favoritos">Favoritos</a>
+                <a href="/logout">Cerrar sesión</a>
+            </div>
+        </div>
+    </header>
+
+    <input type="hidden" id="current-user-id" value="<%= currentUserId %>">
+
+    <div class="container">
+        <!-- Contenido principal -->
+        <main>
+            <div class="seccion-busqueda">
+                <div class="seccion-menu-wrapper">
+                    <div class="hamburger-menu" onclick="myFunction(this)">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                    <input type="text" placeholder="Buscar..." id="barra-busqueda" class="barra-busqueda">
+                </div>
+                <button class="boton-buscar" onclick="filterProducts()">Buscar</button>
+            </div>
+
+            <div id="dropdown-content-menu" class="dropdown-content-menu">    
+                <p><a href="#" class="filter-category" data-category="libros">LIBROS</a></p>
+                <p><a href="#" class="filter-category" data-category="hogar">ARTÍCULOS DE<br>HOGAR</a></p>
+                <p>UNIVERSIDADES</p>
+                <ul>
+                    <li><a href="#" class="filter-university" data-university="ceu">CEU</a></li>
+                    <li><a href="#" class="filter-university" data-university="ucm">UCM</a></li>
+                    <li><a href="#" class="filter-university" data-university="upm">UPM</a></li>
+                </ul>
+                <p><a href="#" id="show-all" class="filter-show-all">MOSTRAR TODOS</a></p>
+                <p><a href="/perfil">MI CUENTA</a></p>
+            </div>
+            
+            <!-- Fila de botones de filtro y vender -->
+            <div class="seccion-filtros-venta">
+                <a href="/nuevaPublicacion?from=listado">
+                  <button class="boton-venta">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                    </svg>
+                    Vender 
+                  </button>
+                </a>
+    <div class="filtrado-botones">
+         <!-- Dropdown para Estado -->
+         <div class="dropdown estado-dropdown">
+            <button class="dropdown-btn estado-dropdown-btn" style="display: none;">Estado</button>
+            <div class="dropdown-content estado-dropdown-content">
+                <button onclick="filterByState('Disponible')">Disponible</button>
+                <button onclick="filterByState('Reservado')">Reservado</button>
+                <button onclick="filterByState('')">Mostrar Todos</button>
+            </div>
+        </div>
+
+        <!-- Rango de precio -->
+        <div class="price-filter">
+            <input type="number" id="min-price" placeholder="Min. precio" min="0" max="9000">
+            <input type="number" id="max-price" placeholder="Max. precio" min="0" max="9000">
+            <button onclick="filterByPrice()">OK</button>
+        </div>
+    </div>
+            </div>
+
+            <!-- Tarjeta de productos -->
+            <div class="rejilla-articulos">
+                <!-- Aquí iteramos sobre los anuncios y generamos las tarjetas dinámicamente -->
+                    <% ads.forEach(function(ad) { %>
+                        <div class="tarjeta-articulo" data-seller-id="<%= ad.sellerId %>" data-username="<%= ad.sellerUsername%>">
+                            <h3 class="titulo-articulo"><%= ad.title %></h3> 
+                            <p class="descripcion-articulo" style="display: none;"><%= ad.description %></p>
+                            <p class="universidad-articulo" style="display: none;"><%= ad.university %></p>
+                            <p class="estado-articulo" style="display: none;"><%= ad.state %></p>
+                            <span><%= ad.price %>€</span> <!-- Precio -->
+                            <button class="boton-favorito" onclick="toggleFavorite(event, '<%= ad.id_ad %>')">❤️</button>
+                        </div>
+                    <% }) %>
+                </div>
+            </main>
+             <!-- Pop-up para mostrar los detalles del artículo -->
+            <div id="popup-overlay"></div>
+            <div id="popup">
+                <button class="close-btn" onclick="closePopup()">Cerrar ✖</button>
+                <br>
+                <h3 id="popup-title"></h3>
+                <p id="popup-description"></p>
+                <p id="popup-price"></p>
+                <p id="popup-university"></p>
+                <p id="popup-state"></p> 
+                <p id="popup-username"></p>
+                <button id="contact-seller-btn" class="contact-seller-btn" onclick="contactSeller()">Contactar al vendedor</button>
+            </div>
+
+        <!-- Sección de Twitter -->
+        <aside class="feed-twitter">
+            <h3>Publicaciones de interés</h3>
+            <aside class="feed-twitter">
+                <!-- Widget de Twitter -->
+                <a class="twitter-timeline" data-width="300" data-height="800" href="https://twitter.com/USPCEU?ref_src=twsrc%5Etfw">Tweets by USPCEU</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            
+                <!-- Botón que lleva a la página de X -->
+                <button class="boton-twitter-ver" onclick="window.location.href='https://x.com/USPCEU'">Ver en X</button>
+        </aside>
+    </div>
+
+    <script src="/javascript/scriptList.js"></script>
+    <script src="/javascript/favoriteList.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>RegisterPage</title>
+	<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/stylesheets/styleWelcomePage.css">
+</head>
+<body>
+	<div class="RecuadroPrincipalRegistro">
+		<img src="/images/LogoCampusSwap.png" alt="LogoIso" class="logo-img-registro">
+		<h1 class="titulo"> Únete a campus swap </h1>
+
+		<form action="/register" method="POST">
+			<div class="container">
+				<div class="input-register">
+					<input required type="text" placeholder="Nombre" name="name" value="<%= values.name || '' %>">
+				</div>
+
+				<div class="input-register">
+					<input required type="text" placeholder="Apellidos" name="surname" value="<%= values.surname || '' %>">
+				</div>
+
+				<div class="input-register">
+					<input required type="text" placeholder="Nombre de usuario" name="username" value="<%= values.username || '' %>">
+					<% if (errors.username) { %>
+						<p class="error-message"><%= errors.username %></p>
+					<% } %>
+				</div>
+
+				<div class="input-register">
+					<input required type="email" placeholder="Dirección de e-mail" name="email" value="<%= values.email || '' %>">
+					<% if (errors.email) { %>
+						<p class="error-message"><%= errors.email %></p>
+					<% } %>
+				</div>
+
+				<div class="input-register">
+					<input required type="password" placeholder="Contraseña" name="password">
+					<% if (errors.password) { %>
+						<p class="error-message"><%= errors.password %></p>
+					<% } %>
+				</div>
+				
+				<div class="botonCrearCuenta">
+					<button id="registerbutton" type="submit"> Crear Cuenta </button>
+				</div>
+
+				<div class="botonVolver">
+					<a href="/" class="back-button">Volver</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

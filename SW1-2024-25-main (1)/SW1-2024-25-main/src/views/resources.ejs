@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+    
+<%- include('partials/head') %>
+
+<body>
+
+    <div class="container">
+        
+        <!-- Sidebar Section -->
+        <%- include('partials/leftBar') %>
+        <!-- End of Sidebar Section -->
+
+        <!-- Main Content -->
+        <main>
+        <h1>Apuntes guardados</h1>
+
+        <!-- User Info Section -->
+        <div class="user-info">
+            <div class="content-row">
+                <img src="../images/users/1.jpg" alt="Foto de perfil">
+                <h2>Carlos_g</h2>
+            </div>
+            <div class="info">
+                <p>Carlos García</p>
+                <p>carlos@example.com</p>
+                <p>GISI</p>
+                <p class="description">Tengo los mejores apuntes de todo el CEU.</p>
+            </div>
+        </div>
+
+        <!-- Alerts List Section -->
+        <div class="list">
+            <h1>Historia</h1>
+            <br>
+            <h2>Fundamentos de la educación</h2>
+            <img src="../images/publicacion1.png" alt="Primera imagen" class="apuntes">
+            <br>
+            <h2>Plataformas y negocios</h2>
+            <img src="../images/publicacion2.png" alt="Segunda imagen" class="apuntes">
+        </div>
+        <br>
+        </main>
+
+        <!-- Right Section -->
+        <%- include('partials/rightBar') %>
+        <!-- End of right section -->
+
+    </div>
+
+    <script src="../public/js/index.js"></script>
+
+</body>
+</html>

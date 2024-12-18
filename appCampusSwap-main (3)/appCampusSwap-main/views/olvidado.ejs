@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ContraseñaOlvidada</title>
+	<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/stylesheets/styleWelcomePage.css">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("p9pNTbGDS29ZqMT1p"); //USER ID
+        })();
+
+        function generatePassword(length) {
+            const array = new Uint8Array(length);
+            window.crypto.getRandomValues(array); 
+
+            const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+            let password = Array.from(array, byte => chars[byte % chars.length]).join('');
+            return password;
+        }
+
+        function sendEmail(event) {
+            event.preventDefault(); 
+            
+            const userEmail = document.getElementById('email').value;
+            const actPassword = generatePassword(8);
+
+            const templateParams = {
+                to_email: userEmail,
+                act_password: actPassword
+            };
+
+            fetch('/olvidado', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: userEmail, password: actPassword })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Correo inviado');
+                        emailjs.send('service_hpo3f45', 'template_e4j14qe', templateParams) //SERVICE ID y TEMPLATE ID
+                        .then(function(response) {
+                            console.log('Si el correo ingresado coincide con uno de nuestros usuarios, recibirás istrucciones para restablecer tu contraseña.', response.status, response.text);
+                        }, function(error) {
+                            console.error('Error en el\'envio del\'correo:', error);
+                            alert('Error en el\'envio del\'correo');
+                        });
+                    
+                    window.location.href = "/login";
+
+                    } else {
+                        alert('Correo no registrado');
+                        console.error("Error:", data.error);
+                    }
+            });
+        }
+    </script>
+
+</head>
+<body>
+	<div class="RecuadroPrincipalLogIn">
+		<img src="/images/LogoCampusSwap.png" alt="LogoIso" class="logo-img-login">
+		<h1 class="tituloLogIn"> Contraseña olvidada </h1>
+
+		<div class="container">
+            <form id="resetPasswordForm" onsubmit="sendEmail(event)">
+            
+                <div class="input-login">
+                    <input required type="email" id="email" name="email" placeholder="Dirección de e-mail">
+                </div>
+
+                <div class="botonAcceder">
+                    <button id="logInbutton" type="submit"> Enviar contraseña provisional</button>
+                </div>
+
+                <div class="botonVolver">
+					<a href="/" class="back-button">Volver</a>
+				</div>
+
+            </form>
+		</div>
+	</div>
+</body>
+</html>

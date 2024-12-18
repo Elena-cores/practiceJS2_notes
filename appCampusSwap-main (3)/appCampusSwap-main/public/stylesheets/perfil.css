@@ -1,0 +1,274 @@
+
+
+header {
+    width: 85%;
+}
+
+.barra-busqueda {
+    margin-left: 20px;
+    margin-top: 40px;
+    width: 56%;
+    padding: 12px 40px; 
+    border: 2px solid #2aa6e0;
+    border-radius: 25px; 
+    background-color: #fff;
+    font-size: 1em;
+  
+
+}
+
+
+
+  .logo-campus-swap {
+    width: 190px;  
+    height: auto + 40px;
+    position: relative;
+    left: 50px;  
+    margin-left: auto;  
+    margin-top: -200px;  
+    transition: transform 0.3s ease;
+  }
+  
+  .logo-campus-swap:hover {
+    transform: scale(1.05);
+  }
+
+
+.botones {
+    display: flex;
+    justify-content: space-between; 
+    margin-top: 30px;
+    padding: 0 20px;
+}
+
+.borrar-producto-boton, .nuevo-anuncio-boton, .seguir-comprando-boton {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 15px; 
+}
+
+.icon {
+    width: 40px; 
+    height: 40px;
+}
+
+.product {
+    position: relative;
+}
+
+.delete-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.delete-button .delete-icon {
+    width: 20px;  
+    height: 20px; 
+}
+
+.delete-button:hover {
+    opacity: 0.7;
+}
+
+.seguir-comprando-boton {
+    float: right;
+    margin: 20px;
+}
+
+.venta-vendidos-boton {
+    display: inline-block; 
+    margin-bottom: 15px;
+    margin-right: 15px;
+    background-color: #007bff; 
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: bold; 
+    border-radius: 8px; 
+    text-transform: uppercase; 
+    cursor: pointer;
+    transition: all 0.3s ease; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+
+}
+
+.venta-vendidos-boton:hover {
+    background-color: #0056b3; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+    transform: translateY(-2px); 
+}
+
+.venta-vendidos-boton:active {
+    background-color: #003f7f; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    transform: translateY(1px); 
+}
+
+.seccion-productos h2 {
+    margin-top: 45px;
+    margin-bottom: 15px; 
+}
+
+.pestañas-productos {
+    margin-bottom: 1px;
+}
+
+.product-list {
+    width: 100%;
+    padding: 20px;
+    background-color: white;
+    height: 600px;  
+    overflow-y: auto;  
+    border: 1px solid #ddd;  
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);  
+    border-radius: 8px;  
+}
+
+.product {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f7f4f4;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.product img {
+    width: 60px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.product-info {
+    flex-grow: 1;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ddd;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 400px;
+    max-width: 90%;
+    z-index: 1000;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+    text-align: center;
+}
+
+.search-bar {
+    padding: 12.5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 100%;
+}
+
+.user-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.user-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #f1f1f1;
+    font-size: 0.95em;
+}
+
+.user-list li:last-child {
+    border-bottom: none;
+}
+
+.user-list li:hover {
+    background-color: #f9f9f9;
+}
+
+.btn {
+    padding: 10px 15px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cancel {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.btn-cancel:hover {
+    background-color: #e0e0e0;
+}
+
+.btn-select {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-select:hover {
+    background-color: #0056b3;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.mark-sold-button {
+    background-color: #28a745; 
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 0.9em;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.mark-sold-button:hover {
+    background-color: #218838; 
+    transform: scale(1.05); 
+}
+
+

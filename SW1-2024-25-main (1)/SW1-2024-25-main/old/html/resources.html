@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Recursos</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+        <link rel="stylesheet" href="../css/main_items.css">
+        <link rel="stylesheet" href="../css/styles.css">
+        <script defer src="../js/script.js"></script>
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="../images/StudyHub.ico">
+    </head>
+
+<body>
+
+    <div class="container">
+        
+        <!-- Sidebar Section -->
+    <aside>
+        <div class="toggle">
+            <div class="logo">
+                <img src="../images/StudyHub.png">
+                <h2>Study<span class="success">Hub</span></h2>
+            </div>
+            <div class="close" id="close-btn">
+                <span class="material-icons-sharp">
+                    close
+                </span>
+            </div>
+        </div>
+  
+        <div class="sidebar">
+            <a href="dashboard.html">
+                <span class="material-icons-sharp">
+                    dashboard
+                </span>
+                <h3>Página principal</h3>
+            </a>
+            <a href="users.html">
+                <span class="material-icons-sharp">
+                    person_outline
+                </span>
+                <h3>Chat</h3>
+            </a>
+            <a href="history.html"  class="active">
+                <span class="material-icons-sharp">
+                    receipt_long
+                </span>
+                <h3>Perfil</h3>
+            </a>
+            <a href="#">
+                <span class="material-icons-sharp">
+                    insights
+                </span>
+                <h3>Archivo</h3>
+            </a>
+            <a href="alertas.html">
+                <span class="material-icons-sharp">
+                    mail_outline
+                </span>
+                <h3>Alertas</h3>
+                <span class="message-count">27</span>
+            </a>
+            <a href="#">
+                <span class="material-icons-sharp">
+                    inventory
+                </span>
+                <h3>Historial de ventas</h3>
+            </a>
+            <!-- <a href="#">
+                <span class="material-icons-sharp">
+                    settings
+                </span>
+                <h3>Settings</h3>
+            </a> -->
+            <a href="#">
+                <span class="material-icons-sharp">
+                    add
+                </span>
+                <h3>Añadir cuenta</h3>
+            </a>
+            <a href="#">
+                <span class="material-icons-sharp">
+                    logout
+                </span>
+                <h3>Cerrar sesión</h3>
+            </a>
+        </div>
+    </aside>
+    <!-- End of Sidebar Section -->
+
+<!-- Main Content -->
+    <main>
+        <h1>Publicaciones de Carlos Garcia</h1>
+
+        <!-- User Info Section -->
+        <div class="user-info">
+            <div class="content-row">
+                <img src="../images/users/1.jpg" alt="Foto de perfil">
+                <h2>Carlos_g</h2>
+            </div>
+            <div class="info">
+                <p>Carlos García</p>
+                <p>carlos@example.com</p>
+                <p>GISI</p>
+                <p class="description">Tengo los mejores apuntes de todo el CEU.</p>
+            </div>
+        </div>
+
+        <!-- Alerts List Section -->
+        <div class="list">
+            <h1>Historia</h1>
+            <br>
+            <h2>Fundamentos de la educación</h2>
+            <img src="../images/publicacion1.png" alt="Primera imagen" class="apuntes">
+            <br>
+            <h2>Plataformas y negocios</h2>
+            <img src="../images/publicacion2.png" alt="Segunda imagen" class="apuntes">
+        </div>
+        <br>
+    </main>
+
+<!-- Right Section -->
+<div class="right-section">
+    <div class="nav">
+        <button id="menu-btn">
+            <span class="material-icons-sharp">
+                menu
+            </span>
+        </button>
+        <div class="dark-mode">
+            <span class="material-icons-sharp active">
+                light_mode
+            </span>
+            <span class="material-icons-sharp">
+                dark_mode
+            </span>
+        </div>
+
+        <div class="profile">
+            <div class="info">
+                <p>Hola, <b>Carlos</b></p>
+                <small class="text-muted">Admin</small>
+            </div>
+            <div class="profile-photo">
+                <img src="../images/users/9.jpg">
+            </div>
+        </div>
+
+    </div>
+    <!-- End of Nav -->
+
+    <div class="user-profile">
+        <div class="logo">
+            <img src="../images/StudyHub_rectangular.png">
+            <h2>CEU Study Hub</h2>
+            <p>Tu mejor aliado en la uni</p>
+        </div>
+    </div>
+
+    <div class="reminders">
+        <div class="header">
+            <h2>Reminders</h2>
+            <span class="material-icons-sharp">
+                notifications_none
+            </span>
+        </div>
+
+        <div class="notification">
+            <div class="icon">
+                <span class="material-icons-sharp">
+                    volume_up
+                </span>
+            </div>
+            <div class="content">
+                <div class="info">
+                    <h3>Workshop</h3>
+                    <small class="text_muted">
+                        08:00 AM - 12:00 PM
+                    </small>
+                </div>
+                <span class="material-icons-sharp">
+                    more_vert
+                </span>
+            </div>
+        </div>
+
+        <div class="notification deactive">
+            <div class="icon">
+                <span class="material-icons-sharp">
+                    edit
+                </span>
+            </div>
+            <div class="content">
+                <div class="info">
+                    <h3>Workshop</h3>
+                    <small class="text_muted">
+                        08:00 AM - 12:00 PM
+                    </small>
+                </div>
+                <span class="material-icons-sharp">
+                    more_vert
+                </span>
+            </div>
+        </div>
+
+        <div class="notification add-reminder">
+            <div>
+                <span class="material-icons-sharp">
+                    add
+                </span>
+                <h3>Add Reminder</h3>
+            </div>
+        </div>
+
+    </div>
+
+      </div>
+    </div>
+
+    <script src="../js/index.js"></script>
+</body>
+
+
+
+
+    <!-- <nav class="top-nav">
+        <button id="menuButton" class="menu-icon">
+            <i class="fas fa-bars" id="menuIcon"></i>
+        </button>
+        <p>Bienvenido a CEU Study Hub, ¡Comienza a compartir tus apuntes!</p>
+        <button id="signoutButton"><a href="index.html" class="edit-link">Sign out</a></button>
+      </nav>
+    
+      <aside class="sidebar" id="sidebar">
+        <header>Menu</header>
+        
+        <a href="profile.html">
+            <i class="fas fa-user"></i>
+            Mi perfil
+        </a> 
+        
+        <a href="index.html" class="active">
+            <i class="fas fa-book"></i>
+            Página principal
+        </a>   
+        
+        <a href="index.html">
+            <i class="fas fa-book"></i>
+            Noticias
+        </a>
+        
+        <a href="resources.html">
+            <i class="fas fa-book"></i>
+            Mis recursos
+        </a>
+        
+        <a href="messages.html">
+            <i class="fas fa-comments"></i>
+            Chats
+        </a>
+        
+        <label class="switch">
+          <i class="fas fa-adjust"></i>
+          <input type="checkbox" id="themeToggle">
+          <span class="slider round"></span>
+        </label>
+  
+  </aside>
+
+  <header>
+    
+    <br>
+    <div class="top-section">
+        <img src="../images/users/1.jpg" alt="Imagen de Perfil" class="profile-pic">
+        <div class="profile-info">
+            <h2>Carlos García</h2>
+        </div>
+    </div>
+   </header>
+  
+   <br>
+    <main class="section">
+        <div class="publication-box">
+          <h2>Fundamentos y metodologia de la historia de la educación</h2>
+          <br>
+          <img src="../images/publicacion1.png" alt="Documento">
+        </div>
+        <br>
+        <div class="publication-box">
+            <h2>Plataformas y negocios web</h2>
+            <br>
+            <img src="../images/publicacion2.png" alt="Documento">
+        </div>
+    </main> -->
+  
+</body>
+</html>

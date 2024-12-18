@@ -1,0 +1,104 @@
+.top-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #333;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  white-space: nowrap;
+  overflow-x: scroll;
+  width: 100%;
+  max-width: 100vw;
+  gap: 10px;
+  scrollbar-width: none;
+  }
+
+  .tutor {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60px;
+    text-align: center;
+  }
+  
+  .tutor img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 5px;
+  }
+  
+  main .user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 20px;
+  }
+  
+  main .content-row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  main .user-info img {
+    width: 50px; 
+    height: 50px;
+    max-width: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  main .content-row h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    color: var(--color-dark);
+  }
+  
+  main .user-info .info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  
+  main .user-info .info p {
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--color-box-shadow);
+    margin: 0;
+    font-size: 16px;
+    color: var(--color-dark-variant);
+    background-color: var(--color-background);
+  }
+  
+  main .user-info .info .description {
+    grid-column: 1 / -1;
+    text-align: justify;
+  }
+  
+  main button {
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--color-light);
+    background-color: var(--color-light);
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  main button:active {
+    transform: translateY(2px);
+    transform: scale(0.95);
+    box-shadow: none;
+  }
+  
+  .apuntes{
+    border-radius: 15px;
+  }

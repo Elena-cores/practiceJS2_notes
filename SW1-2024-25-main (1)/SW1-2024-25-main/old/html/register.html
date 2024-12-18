@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/login.css">
+    
+    <!-- Overlay oscuro para el fondo cuando aparezca el panel de login -->
+    <div id="overlay" class="overlay show"></div>
+
+    <div class="panel show active" id="panel">
+        <div class="form-container sign-up">
+            <form>
+                <h1>Crear una cuenta</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>o regístrate con tus datos</span>
+                <input type="text" placeholder="Nombre">
+                <input type="email" placeholder="Email">
+                <input type="text" placeholder="Facultad">
+                <input type="text" placeholder="Grado">
+                <input type="password" placeholder="Password">
+                <button>Crear cuenta</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form>
+                <h1>Inicia sesión</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>o usa tu email para iniciar sesión</span>
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <a href="reset_password.html">Olvidaste tu contraseña?</a>
+                <button>Iniciar sesión</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>¡Bienvenido de nuevo!</h1>
+                    <p>Inicia sesion para acceder a todas las funciones</p>
+                    <button id="login">Iniciar sesión</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>¡Bienvenido a Study<span class="success">Hub</span>!</h1>
+                    <p>Regístrate para usar todas las funciones de la aplicación</p>
+                    <button id="register">Registro</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    const container = document.getElementById('panel');
+    const registerBtn = document.getElementById('register');
+    const loginBtn = document.getElementById('login');
+    
+    registerBtn.addEventListener('click', () => {
+        container.classList.add("active");
+    });
+    
+    loginBtn.addEventListener('click', () => {
+        container.classList.remove("active");
+    });
+</script>
+
+</html>

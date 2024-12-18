@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head') %>
+
+  <body>
+    <!-- General Container -->
+    <div id="messages-container" class="container">
+      <!-- Sidebar Section -->
+      <%- include('partials/leftBar') %>
+      <!-- End of Sidebar Section -->
+
+      <!-- Main Chat Layout -->
+      <div class="main-content">
+        <!-- Header (Login and Dark Mode) -->
+        <header class="chat-header">
+          <h1>Welcome to CEU-Study<span class="success">Hub</span></h1>
+        </header>
+
+        <!-- Messages Section -->
+        <main>
+          <section class="seccion-mensajes">
+            <!-- Contact List Section -->
+            <div class="lista-conversaciones">
+              <div class="search-section">
+                <h3><i class="fas fa-search"></i> Search</h3>
+                <form id="searchUserForm" class="search-form">
+                  <div class="search-input-container">
+                    <input
+                      type="text"
+                      name="username"
+                      id="searchInput"
+                      placeholder="Search user..."
+                      required
+                    />
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                  </div>
+                </form>
+              </div>
+
+              <div class="chats-section">
+                <h2>Conversations</h2>
+                <!-- Contacts List -->
+                <div id="conversationList" class="chat-list">
+                  <% if (contacts.length > 0) { %>
+                    <% contacts.forEach(contact => { %>
+                      <div class="chat-item" data-contact-id="<%= contact._id %>">
+                        <div class="chat-item-content">
+                          <img
+                            src="<%= contact.imagelink %>"
+                            alt="<%= contact.username %>"
+                            class="profile-pic"
+                          />
+                          <div class="chat-item-info">
+                            <p class="chat-item-name"><%= contact.username %></p>
+                          </div>
+                        </div>
+                      </div>
+                    <% }) %>
+                  <% } else { %>
+                    <p>No contacts available.</p>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+
+            <!-- Chat Window -->
+            <div class="ventana-conversacion">
+              <div id="chatHeader" class="chat-header">
+                <h2>
+                  Chat with <span id="chatUsername">Select a contact</span>
+                </h2>
+              </div>
+              <div id="messagesList" class="messages-list">
+                <!-- Messages will be dynamically loaded here -->
+              </div>
+
+              <form id="sendMessageForm" class="message-form">
+                <div class="message-input-container">
+                  <textarea
+                    name="content"
+                    id="messageContent"
+                    placeholder="Type your message..."
+                    required
+                  ></textarea>
+                  <button type="submit" id="sendButton">
+                    <i class="fas fa-paper-plane"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </section>
+        </main>
+      </div>
+      <!-- Right Section -->
+      <%- include('partials/rightBar') %>
+      <!-- End of Right Section -->
+    </div>
+
+    <!-- Scripts -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const searchInput = document.getElementById("searchInput");
+        const conversationList = document.getElementById("conversationList");
+        const messagesList = document.getElementById("messagesList");
+        const sendMessageForm = document.getElementById("sendMessageForm");
+        const messageContent = document.getElementById("messageContent");
+        let selectedContactId = null;
+        let currentRoomId = null; // This will hold the room ID
+        let senderId = null; // Declare senderId
+
+        // Search functionality
+        searchInput.addEventListener("input", function () {
+          const query = searchInput.value.toLowerCase();
+          document.querySelectorAll(".chat-item").forEach((item) => {
+            const username = item
+              .querySelector(".chat-item-name")
+              .textContent.toLowerCase();
+            item.style.display = username.includes(query) ? "block" : "none";
+          });
+        });
+
+        // Load chat messages when selecting a contact
+        conversationList.addEventListener("click", function (event) {
+          const chatItem = event.target.closest(".chat-item");
+          if (!chatItem) return;
+
+          selectedContactId = chatItem.getAttribute("data-contact-id");
+          const contactUsername = chatItem.querySelector(".chat-item-name").textContent;
+
+          document.getElementById("chatUsername").textContent = contactUsername;
+
+          // Clear previous messages and fetch the new room ID and messages together
+          messagesList.innerHTML = "";
+
+          // Fetch the room ID and messages in one go
+          fetch(`/messages/room/${selectedContactId}`)
+            .then((response) => response.json())
+            .then((data) => {
+              currentRoomId = data.roomId; // Room ID received from the server
+              senderId = data.sender; // Get senderId from the server
+              reciId = data.receiver; // Receiver ID (not used in the UI)
+              socket.emit("joinRoom", currentRoomId); // Emit to join the correct room
+
+              // Append previous messages to the UI
+              data.messages.forEach((message) => {
+                appendMessage(message, message.userId === senderId);
+              });
+            })
+            .catch((err) => console.error("Error fetching chat data:", err));
+        });
+
+        // Send a new message
+        sendMessageForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          if (
+            !messageContent.value.trim() ||
+            !selectedContactId ||
+            !currentRoomId
+          )
+            return;
+
+          const message = {
+            room: currentRoomId,  // Pass the room ID as 'room'
+            content: messageContent.value.trim(),
+            sender: senderId, // Pass the sender ID as 'sender'
+          };
+
+          // Emit the message to the socket
+          socket.emit("sendMessage", message);
+
+          // Send the message to the API
+          fetch('/messages/save', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(message), // Send the message data as JSON
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (!data.success) {
+                console.error('Failed to save message via API:', data.error);
+              }
+            })
+            .catch((err) => console.error('Error saving message to API:', err));
+
+
+          // Append message to the UI as sent
+          appendMessage(message, true);
+
+          // Clear the input field
+          messageContent.value = "";
+        });
+
+        // Receive messages in real-time
+        socket.on("receiveMessage", function (message) {
+          if (
+            message.sender === selectedContactId &&
+            message.room === currentRoomId
+          ) {
+            appendMessage(message, false); // Append message as received
+          }
+        });
+
+        // Append a message to the chat UI
+        function appendMessage(message, isReceived) {
+          const messageDiv = document.createElement("div");
+          messageDiv.classList.add("message", isReceived ? "sent" : "received");
+          messageDiv.textContent = message.content; // Display message content
+          messagesList.appendChild(messageDiv);
+          messagesList.scrollTop = messagesList.scrollHeight; // Scroll to the bottom
+        }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+          const messageInput = document.getElementById('messageContent');
+          const sendButton = document.getElementById('sendButton'); // Asumiendo que tienes un botón de enviar
+
+          messageInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+              if (event.shiftKey) {
+                // Permite un salto de línea
+                const cursorPos = messageInput.selectionStart;
+                const textBeforeCursor = messageInput.value.substring(0, cursorPos);
+                const textAfterCursor = messageInput.value.substring(cursorPos);
+                messageInput.value = `${textBeforeCursor}\n${textAfterCursor}`;
+                messageInput.selectionStart = messageInput.selectionEnd = cursorPos + 1;
+                event.preventDefault(); // Evita el envío del formulario
+              } else {
+                // Envía el mensaje (simula un clic en el botón)
+                sendButton.click();
+                event.preventDefault(); // Evita el salto de línea
+              }
+            }
+          });
+        });
+    </script>
+  </body>
+</html>

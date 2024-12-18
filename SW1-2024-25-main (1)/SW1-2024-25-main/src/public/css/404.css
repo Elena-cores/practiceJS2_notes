@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.container {
+  max-width: 500px;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 5rem;
+  margin-bottom: 0.5em;
+  color: #3949ab;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5em;
+}
+
+a {
+  text-decoration: none;
+  background: #3949ab;
+  color: #fff;
+  padding: 0.8em 1.5em;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+a:hover {
+  background: #303f9f;
+}
+
+.illustration {
+  width: 200px;
+  height: auto;
+  margin-bottom: 1em;
+}
+
+/* Ajustar este contenedor para simular una "hoja" o "apunte" flotando */
+.floating-note {
+  position: relative;
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}

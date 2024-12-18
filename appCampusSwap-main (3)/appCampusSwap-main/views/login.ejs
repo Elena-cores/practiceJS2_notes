@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>LogInPage</title>
+	<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/stylesheets/styleWelcomePage.css">
+</head>
+<body>
+	<div class="RecuadroPrincipal">
+		<img src="/images/LogoCampusSwap.png" alt="LogoIso" class="logo-img-login">
+		<h1 class="tituloLogIn"> ¡Te damos la bienvenida! </h1>
+
+		<form action="/login" method="POST">
+			<div class="container">
+				
+				<div class="input-login">
+					<input required type="email" name="email" placeholder="Dirección de e-mail">
+				</div>
+
+				<div class="input-login">
+					<input required type="password" name="password" placeholder="Contraseña">
+				</div>
+
+				<a href="/olvidado" class="olvidado"> ¿Has olvidado tu contraseña? </a>
+
+				<div class="botonAcceder">
+					<button id="logInbutton" type="submit"> Accede a campus swap </button>
+				</div>
+
+				<div class="botonVolver">
+					<a href="/" class="back-button">Volver</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

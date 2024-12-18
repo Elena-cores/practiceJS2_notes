@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/bars.css">
+    <link rel="stylesheet" href="../css/messages.css">
+    <link rel="stylesheet" id="themeStylesheet" href="../css/dark.css">
+    <script defer src="../js/script.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../images/StudyHub.ico">
+</head>
+
+<body>
+    <nav class="top-nav">
+        <button id="menuButton" class="menu-icon">
+            <i class="fas fa-bars" id="menuIcon"></i>
+        </button>
+        <p>Bienvenido a CEU Study Hub, ¡Comienza a compartir tus apuntes!</p>
+        <button id="signoutButton"><a href="index.html" class="edit-link">Sign out</a></button>
+      </nav>
+    
+      <aside class="sidebar" id="sidebar">
+        <header>Menu</header>
+        
+        <a href="profile.html">
+            <i class="fas fa-user"></i>
+            Mi perfil
+        </a> 
+        
+        <a href="index.html" class="active">
+            <i class="fas fa-book"></i>
+            Página principal
+        </a>   
+        
+        <a href="index.html">
+            <i class="fas fa-book"></i>
+            Noticias
+        </a>
+        
+        <a href="resources.html">
+            <i class="fas fa-book"></i>
+            Mis recursos
+        </a>
+        
+        <a href="messages.html">
+            <i class="fas fa-comments"></i>
+            Chats
+        </a>
+        
+        <label class="switch">
+          <i class="fas fa-adjust"></i>
+          <input type="checkbox" id="themeToggle">
+          <span class="slider round"></span>
+        </label>
+      
+      </aside>
+        <br>
+        <h2 class="top-section-chat">Carlos García</h2>
+    </header>
+
+    <br><br>
+    <div class="chat-container">
+        <div class="chat-list">
+            <div class="chat-item"> <img src="../images/users/1.jpg" alt="Imagen de Perfil" class="profile-pic" width="100%"> Juanestudioso</div>
+            <div class="chat-item"> <img src="../images/users/2.jpg" alt="Imagen de Perfil" class="profile-pic" width="100%"> Manualo</div>
+            <div class="chat-item"> <img src="../images/users/3.jpg" alt="Imagen de Perfil" class="profile-pic" width="100%"> Laura CEU</div>
+            <div class="chat-item"> <img src="../images/users/4.jpg" alt="Imagen de Perfil" class="profile-pic" width="100%"> Mariela</div>
+            <div class="chat-item"> <img src="../images/users/5.jpg" alt="Imagen de Perfil" class="profile-pic" width="100%"> Isabelita18</div>
+        </div>
+
+        <div class="chat-section">
+            <div class="message sender">Hola.<span class = "message-time">7:04am</span></div>
+            <div class="message receiver">Hola. ¿Estás interesado en mis apuntes?<span class = "message-time">7:05am</span></div>
+            <div class="message sender">Sí.<span class = "message-time">7:06am</span></div>
+            <div class="message receiver">¿Qué asignatura quieres?<span class = "message-time">7:07am</span></div>
+            <div class="message sender">Estoy interesado en Sistemas Web 1.<span class = "message-time">7:08am</span></div>
+            <div class="message receiver">Perfecto. De esa asignatura también tengo ejercicios extra.<span class = "message-time">7:84am</span></div>
+            <div class="message sender">Me vienen bien. Me la quedo.<span class = "message-time">7:09am</span></div>
+            <div class="message receiver">¡Me alegra escuchar eso! Dame tu dirección de correo electrónico para enviártelo.<span class = "message-time">7:10am</span></div>
+            <div class="message sender">federicoperez@ejemplo.com<span class = "message-time">7:10am</span></div>
+            <div class="message receiver">¡Listo! ¡Qué los disfrutes!<span class = "message-time">7:11am</span></div>
+            <div class="message sender">¡Gracias!<span class = "message-time">7:12am</span></div>
+            <div class="message receiver">Adiós<span class = "message-time">7:12am</span></div>
+            <div class="message sender">¡Adiós!<span class = "message-time">7:12am</span></div>
+
+            <div id="chat-input-container">
+                <input type="text" class="chat-input" placeholder="Escribe tu mensaje...">
+                <button class="chat-button">Enviar</button>
+            </div>
+        </div>
+        
+    </div>
+    
+</body>
+</html>

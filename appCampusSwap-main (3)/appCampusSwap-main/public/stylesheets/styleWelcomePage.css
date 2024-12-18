@@ -1,0 +1,232 @@
+html{
+	background: linear-gradient(#0095DB, #005075);
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.RecuadroPrincipal{
+	background-color: white;
+	width: 430px;
+	height: 600px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	text-align: center;
+	border-radius: 20px;
+	padding: 10px;
+	margin: auto;
+}
+
+.logo-img{
+	width: 240px;
+	height: 230px;
+	margin-bottom: 20px;
+}
+
+.Registro{
+	background-color: #00C2CB;
+	color: white;
+	padding: 10px 80px;
+	border: none;
+	border-radius: 15px;
+	font-size: 19px;
+	text-align: center;
+	justify-content: center;
+	margin-bottom: 20px;
+	font-family: "Lora", sans-serif;
+}
+
+.IniciarSesion{
+	background-color: #00C2CB;
+	color: white;
+	padding: 10px 59px;
+	border: none;
+	border-radius: 15px;
+	font-size: 19px;
+	text-align: center;
+	justify-content: center;
+	margin-bottom: 70px;
+	font-family: "Lora", sans-serif;
+}
+
+.RecuadroPrincipalRegistro{
+	background-color: white;
+	width: 430px;
+	height: 600px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	position: relative;
+	text-align: center;
+	border-radius: 20px;
+	padding: 10px;
+}
+
+.titulo{
+	font-size: 19px;
+	font-family: "Lora", sans-serif;
+	margin-bottom: 10px;
+}
+
+.logo-img-registro{
+	width: 160px;
+	height: 150px;
+}
+
+.container{
+	width: 100%;
+	max-width: 450px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.input-register{
+	width: 100%;
+	max-width: 400px;
+	margin-bottom: 10px;
+	display: flex;
+	align-items: center;
+}
+
+.input-register input{
+	width: 100%;
+	padding: 10px;
+	border: 2px solid black;
+	border-radius: 30px;
+	font-size: 15px;
+	text-align: left;
+	font-family: "Lora", sans-serif;
+}
+
+.botonCrearCuenta{
+	width: 100%;
+	max-width: 400px;
+	display: flex;
+	justify-content: center;
+	margin-top: 15px;
+}
+
+#registerbutton{
+	background-color: #00C2CB;
+	color: white;
+	border: none;
+	border-radius: 15px;
+	padding: 10px 80px;
+	font-size: 18px;
+	text-align: center;
+	font-family: "Lora", sans-serif;
+}
+
+#registerbutton:hover{
+	background-color: #009aa3;
+}
+
+.RecuadroPrincipalLogIn{
+	background-color: white;
+	width: 430px;
+	height: 600px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	position: relative;
+	text-align: center;
+	border-radius: 20px;
+	padding: 10px;
+}
+
+.logo-img-login{
+	width: 190px;
+	height: 180px;
+}
+
+.input-login{
+	width: 100%;
+	max-width: 400px;
+	margin-bottom: 20px;
+	display: flex;
+	align-items: center;
+}
+
+.input-login input{
+	width: 100%;
+	padding: 10px;
+	border: 2px solid black;
+	border-radius: 30px;
+	font-size: 15px;
+	text-align: left;
+	font-family: "Lora", sans-serif;
+}
+
+.olvidado{
+	font-size: 16px;
+	font-family: "Lora", sans-serif;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.tituloLogIn{
+	font-size: 18px;
+	font-family: "Lora", sans-serif;
+	margin-bottom: 10px;
+}
+
+.botonAcceder{
+	width: 100%;
+	max-width: 400px;
+	display: flex;
+	justify-content: center;
+	margin-top: 15px;
+	margin-bottom: 60px;
+}
+
+#logInbutton{
+	background-color: #02cad5;
+	color: white;
+	border: none;
+	border-radius: 15px;
+	padding: 10px 70px;
+	font-size: 17px;
+	text-align: center;
+	font-family: "Lora", sans-serif;
+}
+
+#logInbutton:hover{
+	background-color: #009aa3;
+}
+
+.botonVolver {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+	margin-bottom: 8px;
+}
+
+.back-button {
+    text-decoration: none;
+    color: white;
+    background-color: #00c4cc; 
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #009ea6; 
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}

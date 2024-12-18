@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/nuevaPublicacion.css">
+    <title>Modificar Producto</title>
+</head>
+<body>
+    <!-- Botón para volver a la página de perfil -->
+    <a href="/<%= from %>" class="volver-boton">← Volver a <%= from === 'perfil' ? 'perfil' : 'listado' %></a>
+
+    <h1>Modificar Producto</h1>
+
+    <form action="/modificarPublicacion" method="POST">
+        <input type="hidden" name="id_ad" value="<%= id_ad %>">
+        <label for="title">Título del producto:</label>
+        <input type="text" id="title" name="title" value="<%= adData[0].title %>" required>
+
+        <label for="description">Descripción:</label>
+        <textarea id="description" name="description" required><%= adData[0].description %></textarea>
+      
+        <label for="price">Precio:</label>
+        <input type="number" id="price" name="price" step="0.01" value="<%= adData[0].price %>" required>
+      
+        <label for="state">Estado:</label>
+        <select id="state" name="state">
+          <option value="Disponible" <%= adData[0].state === 'Disponible' ? 'selected' : '' %>>Disponible</option>
+          <option value="Reservado" <%= adData[0].state === 'Reservado' ? 'selected' : '' %>>Reservado</option>
+        </select>
+      
+        <label for="university">Universidad:</label>
+        <select id="university" name="university" required>
+            <option value="Ninguna" <%= adData[0].university === 'Ninguna' ? 'selected' : '' %>>Ninguna</option>
+            <option value="CEU" <%= adData[0].university === 'CEU' ? 'selected' : '' %>>CEU</option>
+            <option value="UCM" <%= adData[0].university === 'UCM' ? 'selected' : '' %>>UCM</option>
+            <option value="UPM" <%= adData[0].university === 'UPM' ? 'selected' : '' %>>UPM</option>
+        </select>
+      
+        <button type="submit">Modificar Publicación</button>
+    </form>
+</body>
+</html>

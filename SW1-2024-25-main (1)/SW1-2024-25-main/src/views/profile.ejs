@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('partials/head') %>
+
+<body>
+    <div class="container">
+        <!-- Sidebar Section -->
+        <%- include('partials/leftBar') %>
+        <!-- End of Sidebar Section -->
+
+        <!-- Main Content -->
+        <main>
+            <!-- User Info Section -->
+            <h1>Tu perfil</h1>
+            <div class="my-profile">
+                <!-- Información del usuario -->
+                <div class="row">
+                    <div class="img-container">
+                        <a onclick="editField('profile-img')"><img class="profile-pic" src="../images/users/1.jpg" alt="Foto de perfil"></a>
+                        <span class="material-icons-sharp edit-icon edit-img-icon" onclick="editField('profile-img')">editar</span>
+                    </div>
+                    <div class="text-container">
+                    <!-- Username -->
+                    <div id="username"><p>
+                        <%= mainUser.username %>
+                        <span class="material-icons-sharp edit-icon" onclick="editField('username')">editar</span>
+                    </p></div>
+                    <div id="email"><p>
+                        <%= mainUser.email %>
+                        <span class="material-icons-sharp edit-icon" onclick="editField('email')">editar</span>
+                    </p></div>
+                </div>
+                </div>
+
+                <br>
+                <div class="extra-row">
+                    <!-- Degree -->
+                    <div id="degree"><p>
+                        <%= mainUser.degree %>
+                        <span class="material-icons-sharp edit-icon" onclick="editField('degree')">editar</span>
+                    </p></div>
+                    <!-- Description -->
+                    <div id="description"><p>
+                        <%= mainUser.description %>
+                        <span class="material-icons-sharp edit-icon" onclick="editField('description')">editar</span>
+                    </p></div>
+                </div>
+            </div>
+            <!-- Sección de publicaciones -->
+            <div class="options">
+                <div class="file-upload-section">
+                    <h2 class="active">Subir apuntes</h2>
+                    <br>
+                    <!-- Formulario para subir nuevos archivos -->
+                    <form id="upload-file-form" enctype="multipart/form-data">
+                        <input type="file" name="uploadedFile" id="uploadedFile" required>
+                        <input type="text" name="title" placeholder="Título" required>
+                        <textarea name="description" placeholder="Descripción" required></textarea>
+                        <input type="text" name="degree" placeholder="Carrera/Grado" required>
+                        <input type="text" name="subject" placeholder="Materia" required>
+                        <input type="number" name="year" placeholder="Año" required>
+                        <input type="number" name="price" placeholder="Precio (€)" step="0.01" required>
+                        <button type="submit">Subir archivo</button>
+                    </form>
+                </div>
+                <br>
+                <div class="list" id="file-list">
+                    <div class="file-item"><h2>Mis apuntes</h2>
+                    <!-- Lista de archivos subidos -->
+                    <% uploadedNotes.forEach(function(note) { %>
+                        
+                            <h3><%= note.title %> - <%= note.degree %></h3>
+                            <p><strong>Materia: </strong> <%= note.subject %></p>
+                            <p><strong>Año: </strong> <%= note.year %></p>
+                            <p><strong>Descripción: </strong> <%= note.description %></p>
+                            <p><strong>Precio: </strong> €<%= note.price %></p>
+                            <a href="<%= note.notesRoute %>" download>Descargar</a>
+                        </div>
+                    <% }); %>
+                </div>
+                
+            </div>
+            <br>
+            <div class="list">
+                <h2>Fundamentos y metodología de la historia de la educación</h2>
+                <br>
+                <img src="../images/publicacion1.png" alt="Publicación">
+            </div>
+            <br>
+        </main>     
+        <!-- End of Main Content -->
+
+        <!-- Right Section -->
+        <%- include('partials/rightBar') %>
+        <!-- End of Right Section -->
+
+        <script src="/js/editProfile.js" defer></script>
+    </div>                
+</body>
+</html>

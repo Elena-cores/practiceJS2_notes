@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/main_items.css">
+  <script defer src="../js/script.js"></script>
+  <link rel="icon" type="image/x-icon" href="../images/StudyHub.ico">
+  <title>CEU Study Hub</title>
+</head>
+
+<body>
+    
+  <div class="container">
+    <!-- Sidebar Section -->
+    <aside>
+      <div class="toggle">
+          <div class="logo">
+              <img src="../images/StudyHub.png">
+              <h2>Study<span class="success">Hub</span></h2>
+          </div>
+          <div class="close" id="close-btn">
+              <span class="material-icons-sharp">
+                  close
+              </span>
+          </div>
+      </div>
+
+      <div class="sidebar">
+          <a href="dashboard.html" class="active">
+              <span class="material-icons-sharp">
+                  dashboard
+              </span>
+              <h3>Página principal</h3>
+          </a>
+          <a href="users.html">
+              <span class="material-icons-sharp">
+                  person_outline
+              </span>
+              <h3>Chat</h3>
+          </a>
+          <a href="history.html">
+              <span class="material-icons-sharp">
+                  receipt_long
+              </span>
+              <h3>Perfil</h3>
+          </a>
+          <a href="#">
+              <span class="material-icons-sharp">
+                  insights
+              </span>
+              <h3>Archivo</h3>
+          </a>
+          <a href="alertas.html">
+              <span class="material-icons-sharp">
+                  mail_outline
+              </span>
+              <h3>Alertas</h3>
+              <span class="message-count">27</span>
+          </a>
+          <a href="#">
+              <span class="material-icons-sharp">
+                  inventory
+              </span>
+              <h3>Historial de ventas</h3>
+          </a>
+          <!-- <a href="#">
+              <span class="material-icons-sharp">
+                  settings
+              </span>
+              <h3>Settings</h3>
+          </a> -->
+          <a href="#">
+              <span class="material-icons-sharp">
+                  add
+              </span>
+              <h3>Añadir cuenta</h3>
+          </a>
+          <a href="#">
+              <span class="material-icons-sharp">
+                  logout
+              </span>
+              <h3>Cerrar sesión</h3>
+          </a>
+      </div>
+    </aside>
+  <!-- End of Sidebar Section -->
+
+    <!-- Main Content -->
+    <main>
+      <h1>Bienvenido a CEU-Study<span class="success">Hub</span></h1>
+      <h2>Tu mejor aliado en la uni</h2>
+      <h3>¡Comienza a compartir apuntes!</h3>
+      
+      <header class="top-section" id="contactBar">
+        <!-- Contactos generados dinámicamente -->
+      </header>
+      
+        <div class="main-content">
+            <div class="news-container" id="newsContainer">
+            <!-- Noticias y anuncios generados dinámicamente -->
+            </div>
+        </div>
+    </main>
+      <!-- End of Main Content -->
+  
+    <!-- Right Section -->
+    <div class="right-section">
+        <div class="nav">
+            <button id="menu-btn">
+                <span class="material-icons-sharp">
+                    menu
+                </span>
+            </button>
+            <div class="dark-mode">
+                <span class="material-icons-sharp active">
+                    light_mode
+                </span>
+                <span class="material-icons-sharp">
+                    dark_mode
+                </span>
+            </div>
+
+            <div class="profile">
+                <div class="info">
+                    <p>Hola, <b>Carlos</b></p>
+                    <small class="text-muted">Admin</small>
+                </div>
+                <div class="profile-photo">
+                    <img src="../images/users/9.jpg">
+                </div>
+            </div>
+
+        </div>
+        <!-- End of Nav -->
+
+        <div class="user-profile">
+            <div class="logo">
+                <img src="../images/StudyHub_rectangular.png">
+                <h2>CEU Study Hub</h2>
+                <p>Tu mejor aliado en la uni</p>
+            </div>
+        </div>
+
+        <div class="reminders">
+            <div class="header">
+                <h2>Reminders</h2>
+                <span class="material-icons-sharp">
+                    notifications_none
+                </span>
+            </div>
+
+            <div class="notification">
+                <div class="icon">
+                    <span class="material-icons-sharp">
+                        volume_up
+                    </span>
+                </div>
+                <div class="content">
+                    <div class="info">
+                        <h3>Workshop</h3>
+                        <small class="text_muted">
+                            08:00 AM - 12:00 PM
+                        </small>
+                    </div>
+                    <span class="material-icons-sharp">
+                        more_vert
+                    </span>
+                </div>
+            </div>
+
+            <div class="notification deactive">
+                <div class="icon">
+                    <span class="material-icons-sharp">
+                        edit
+                    </span>
+                </div>
+                <div class="content">
+                    <div class="info">
+                        <h3>Workshop</h3>
+                        <small class="text_muted">
+                            08:00 AM - 12:00 PM
+                        </small>
+                    </div>
+                    <span class="material-icons-sharp">
+                        more_vert
+                    </span>
+                </div>
+            </div>
+
+            <div class="notification add-reminder">
+                <div>
+                    <span class="material-icons-sharp">
+                        add
+                    </span>
+                    <h3>Add Reminder</h3>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- End of right section -->
+  
+  </div>
+
+  <script>
+    const contactBar = document.getElementById('contactBar');
+    const contacts = [
+      'Carlos', 'Federico', 'Ana', 'María', 
+      'Marta', 'Laura', 'Pedro', 'Luis', 
+      'Pablo', 'Miguel', 'Isabel', 'Clara', 
+      'Daniela', 'Sofía', 'Christian', 'Javier'
+    ];
+
+    const images = [
+      "../images/users/1.jpg",
+      "../images/users/2.jpg",
+      "../images/users/3.jpg",
+      "../images/users/4.jpg",
+      "../images/users/5.jpg",
+      "../images/users/6.jpg",
+      "../images/users/7.jpg",
+      "../images/users/8.jpg"
+    ];
+
+    const publications = [
+      "../images/news/noticias1.png",
+      "../images/news/noticias2.png",
+      "../images/news/noticias3.png",
+      "../images/news/noticias4.png"
+    ];
+    
+    // Generar elementos de contacto
+    contacts.forEach((contact, index) => {
+      const contactElement = document.createElement('div');
+      contactElement.className = 'tutor';
+      const imageIndex = index % images.length; // Usar el índice de la imagen cíclicamente
+      contactElement.innerHTML = `
+        <img src="${images[imageIndex]}" alt="Imagen de Perfil">
+        <p>${contact}</p>
+      `;
+      contactBar.appendChild(contactElement);
+    });
+
+    const newsContainer = document.getElementById('newsContainer');
+
+    // Función para generar contenido de noticias con la estructura original
+    function createNewsItem(index) {
+      const newsItem = document.createElement('div');
+      newsItem.className = 'box';
+      const publicationIndex = (index - 1) % publications.length;
+      newsItem.innerHTML = `
+        <img src="${publications[publicationIndex]}" alt="Publicación">
+        <div class="content-details">
+          <h3>Titulo de la publicación</h3>
+          <p>Subtitulo</p>
+        </div>
+        <div class="buttons">
+          <i class="fas fa-heart"></i>
+          <i class="fas fa-arrow-right"></i>
+          <i class="fas fa-save"></i>
+        </div>
+      `;
+      return newsItem;
+    }
+
+    // Función para generar contenido de anuncio sin botones
+    function createAdItem() {
+      const adItem = document.createElement('div');
+      adItem.className = 'ad-box';
+      adItem.innerHTML = `
+        <img src="../images/anuncio1.png" alt="Anuncio">
+        <h3>Anuncio Especial</h3>
+        <p>Contenido promocional</p>
+      `;
+      return adItem;
+    }
+
+    // Generar contenido de noticias y agregar anuncios en posiciones específicas
+    for (let i = 1; i <= 15; i++) {
+      if (i === 2 || i === 5 || i === 8) { // Agregar anuncios en la segunda, quinta y octava posición
+        newsContainer.appendChild(createAdItem());
+      } else {
+        newsContainer.appendChild(createNewsItem(i));
+      }
+    }
+  </script>
+
+    <script src="../js/index.js"></script>
+
+</body>
+</html>
+

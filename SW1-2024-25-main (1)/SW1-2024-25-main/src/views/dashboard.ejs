@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head') %>
+
+<body>
+    <div class="container">
+        <!-- Sidebar Section -->
+        <%- include('partials/leftBar') %>
+        <!-- End of Sidebar Section -->
+
+        <!-- Main Content -->
+        <main>
+            <h1>Panel de Administración</h1>
+            <!-- Analyses -->
+            <div class="analyse">
+                <div class="sales">
+                    <div class="status">
+                        <div class="info">
+                            <h3>Nuevos apuntes</h3>
+                            <h1><%= newNotes %></h1>
+                        </div>
+                        <div class="progresss">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="percentage">
+                                <p>+81%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="visits">
+                    <div class="status">
+                        <div class="info">
+                            <h3>Visitas mensuales</h3>
+                            <h1>1,181</h1>
+                        </div>
+                        <div class="progresss">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="percentage">
+                                <p>+48%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="searches">
+                    <div class="status">
+                        <div class="info">
+                            <h3>Busquedas</h3>
+                            <h1>547</h1>
+                        </div>
+                        <div class="progresss">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="percentage">
+                                <p>+21%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Analyses -->
+
+            <!-- New Users Section -->
+            <br>
+                <h2>Nuevos usuarios</h2>
+                <div class="list">
+                    <% recentUsers.forEach(user => { %>
+                        <div class="user">
+                            <img src="<%= user.imagelink %>" alt="User profile image">
+                            <h2><%= user.username %></h2>
+                            <p><%= user.email %></p>
+                        </div>
+                    <% }) %>
+                </div>
+            <!-- End of New Users Section -->
+
+            <!-- Recent Orders Table -->
+            <br>
+                <h2>Últimas alertas</h2>
+                <div class="obj-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre de usuario</th>
+                            <th>Descripción</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="alertTableBody">
+                        <% alerts.forEach(alert => { %>
+                            <tr>
+                                <td><%= alert.username %></td>
+                                <td><%= alert.description %></td>
+                                <td><%= alert.status %></td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+                <a id="loadMoreAlerts" class="btn btn-primary" data-skip="10">Ver más</a>
+
+            </div>
+            <!-- End of Recent Orders -->
+
+        </main>
+        <!-- End of Main Content -->
+
+        <!-- Right Section -->
+        <%- include('partials/rightBar') %>
+        <!-- End of right section -->
+
+
+    </div>
+    
+</body>
+
+<script>
+    document.getElementById('loadMoreAlerts').addEventListener('click', async function () {
+        const skip = parseInt(this.getAttribute('data-skip'), 10);
+        const response = await fetch(`/dashboard/alertas/more?skip=${skip}`);
+        const newAlerts = await response.json();
+
+        const alertTableBody = document.getElementById('alertTableBody');
+        newAlerts.forEach(alert => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${alert.username}</td>
+                <td>${alert.description}</td>
+                <td>${alert.status}</td>
+            `;
+            alertTableBody.appendChild(row);
+        });
+
+        this.setAttribute('data-skip', skip + 10);
+    });
+</script>
+
+</html>

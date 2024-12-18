@@ -1,0 +1,131 @@
+/* Estilo general */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Formulario */
+form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para las opciones del formulario */
+select {
+    background-color: white;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Estilos de imagen */
+#photo {
+    margin-bottom: 30px;
+}
+
+/* Estilo para los mensajes de error */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+/* Diseño adaptable para pantallas más pequeñas */
+@media (max-width: 600px) {
+    form {
+        padding: 20px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+        width: 100%;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+/* Estilo del botón "Volver a perfil" */
+.volver-boton {
+    position: absolute; /* Fijo en la parte superior izquierda */
+    top: 20px;
+    left: 20px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.volver-boton:hover {
+    background-color: #0056b3; /* Cambio de color al pasar el ratón */
+}
+
+h1 {
+    margin-top: 80px; /* Ajustar para que el título no quede detrás del botón */
+}
+
+#description {
+    width: 96%; /* Para que tenga el mismo ancho que los otros campos */
+    resize: vertical; 
+    max-height: 150px; 
+    min-height: 100px;
+}

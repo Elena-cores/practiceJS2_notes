@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicación</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main_items.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script defer src="../js/script.js"></script>
+    <link rel="icon" type="image/x-icon" href="../images/StudyHub.ico">
+</head>
+
+<body>
+    <div class="container">
+        
+        <!-- Sidebar Section -->
+    <aside>
+        <div class="toggle">
+            <div class="logo">
+                <img src="../images/StudyHub.png">
+                <h2>Study<span class="success">Hub</span></h2>
+            </div>
+            <div class="close" id="close-btn">
+                <span class="material-icons-sharp">
+                    close
+                </span>
+            </div>
+        </div>
+  
+        <div class="sidebar">
+            <a href="dashboard.html">
+                <span class="material-icons-sharp">
+                    dashboard
+                </span>
+                <h3>Página principal</h3>
+            </a>
+            <a href="users.html">
+                <span class="material-icons-sharp">
+                    person_outline
+                </span>
+                <h3>Chat</h3>
+            </a>
+            <a href="history.html"  class="active">
+                <span class="material-icons-sharp">
+                    receipt_long
+                </span>
+                <h3>Perfil</h3>
+            </a>
+            <a href="#">
+                <span class="material-icons-sharp">
+                    insights
+                </span>
+                <h3>Archivo</h3>
+            </a>
+            <a href="alertas.html">
+                <span class="material-icons-sharp">
+                    mail_outline
+                </span>
+                <h3>Alertas</h3>
+                <span class="message-count">27</span>
+            </a>
+            <a href="#">
+                <span class="material-icons-sharp">
+                    inventory
+                </span>
+                <h3>Historial de ventas</h3>
+            </a>
+            <!-- <a href="#">
+                <span class="material-icons-sharp">
+                    settings
+                </span>
+                <h3>Settings</h3>
+            </a> -->
+            <a href="#">
+                <span class="material-icons-sharp">
+                    add
+                </span>
+                <h3>Añadir cuenta</h3>
+            </a>
+            <a href="#">
+                <span class="material-icons-sharp">
+                    logout
+                </span>
+                <h3>Cerrar sesión</h3>
+            </a>
+        </div>
+    </aside>
+    <!-- End of Sidebar Section -->
+
+    <!-- Main Content -->
+    <main>
+        <h1>Publicaciones de Carlos Garcia</h1>
+
+        <!-- User Info Section -->
+        <div class="user-info">
+            <div class="content-row">
+                <img src="../images/users/1.jpg" alt="Foto de perfil">
+                <h2>Carlos_g</h2>
+            </div>
+            <div class="info">
+                <p>Carlos García</p>
+                <p>carlos@example.com</p>
+                <p>GISI</p>
+                <p class="description">Tengo los mejores apuntes de todo el CEU.</p>
+            </div>
+        </div>
+
+    <!-- Alerts List Section -->
+        <div class="list">
+            <h2>Fundamentos y metodología de la historia de la educación</h2>
+            <br>
+            <img src="../images/publicacion1.png" alt="Publicación">
+            <div class="buttons">
+                <button class="button">Recomendar</button>
+                <button class="button">Enviar mensaje</button>
+                <button class="button">Compartir</button>
+                <button class="button">Guardar</button>
+            </div>
+        </div>
+        <br>
+    </main>
+
+<!-- Right Section -->
+<div class="right-section">
+    <div class="nav">
+        <button id="menu-btn">
+            <span class="material-icons-sharp">
+                menu
+            </span>
+        </button>
+        <div class="dark-mode">
+            <span class="material-icons-sharp active">
+                light_mode
+            </span>
+            <span class="material-icons-sharp">
+                dark_mode
+            </span>
+        </div>
+
+        <div class="profile">
+            <div class="info">
+                <p>Hola, <b>Carlos</b></p>
+                <small class="text-muted">Admin</small>
+            </div>
+            <div class="profile-photo">
+                <img src="../images/users/9.jpg">
+            </div>
+        </div>
+
+    </div>
+    <!-- End of Nav -->
+
+    <div class="user-profile">
+        <div class="logo">
+            <img src="../images/StudyHub_rectangular.png">
+            <h2>CEU Study Hub</h2>
+            <p>Tu mejor aliado en la uni</p>
+        </div>
+    </div>
+
+    <div class="reminders">
+        <div class="header">
+            <h2>Reminders</h2>
+            <span class="material-icons-sharp">
+                notifications_none
+            </span>
+        </div>
+
+        <div class="notification">
+            <div class="icon">
+                <span class="material-icons-sharp">
+                    volume_up
+                </span>
+            </div>
+            <div class="content">
+                <div class="info">
+                    <h3>Workshop</h3>
+                    <small class="text_muted">
+                        08:00 AM - 12:00 PM
+                    </small>
+                </div>
+                <span class="material-icons-sharp">
+                    more_vert
+                </span>
+            </div>
+        </div>
+
+        <div class="notification deactive">
+            <div class="icon">
+                <span class="material-icons-sharp">
+                    edit
+                </span>
+            </div>
+            <div class="content">
+                <div class="info">
+                    <h3>Workshop</h3>
+                    <small class="text_muted">
+                        08:00 AM - 12:00 PM
+                    </small>
+                </div>
+                <span class="material-icons-sharp">
+                    more_vert
+                </span>
+            </div>
+        </div>
+
+        <div class="notification add-reminder">
+            <div>
+                <span class="material-icons-sharp">
+                    add
+                </span>
+                <h3>Add Reminder</h3>
+            </div>
+        </div>
+
+    </div>
+
+      </div>
+    </div>
+
+    <script src="../js/index.js"></script>
+</body>
+
+
+
+</html>

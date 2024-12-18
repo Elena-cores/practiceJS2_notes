@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favoritos - Campus Swap</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/listadoFavoritos.css">
+    <link rel="stylesheet" href="/stylesheets/popUp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <%- include('partials/sidebar') %>
+
+    <div class="container">
+        <div class="main-content">
+            <header>
+                <h1>Favoritos</h1>
+            </header>
+
+   
+        <% if (favorites.length > 0) { %>
+            <div class="rejilla-articulos">
+                <% favorites.forEach(function(ad) { %>
+                    <div class="tarjeta-articulo" style="border: 2px solid #004080;">
+                        <h3 class="titulo-articulo"><%= ad.title %></h3>
+                        <p class="descripcion-articulo" style="display: none;"><%= ad.description %></p>
+                        <p class="estado-articulo"><%= ad.state %></p>
+                        <p class="universidad-articulo"><strong>Universidad:</strong> <%= ad.university %></p>
+                        <p class="nombre-vendedor"><strong>Vendedor:</strong> <%= ad.sellerUsername %></p>
+                        <span><%= ad.price %> €</span>
+                        <button class="boton-favorito" onclick="toggleFavorite(event, <%= ad.id_ad %>)" title="Quitar de favoritos">❤️</button>
+                    </div>
+                <% }) %>
+            </div>
+        <% } else { %>
+            <p class="empty-message">No tienes anuncios en favoritos.</p>
+        <% } %>
+    </div>
+</div>
+
+<script src="/javascript/scriptList.js"></script>
+<script src="/javascript/favoriteList.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buzón de Mensajes</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/buzon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <%- include('partials/sidebar') %>
+        
+        <div class="main-content">
+            <header>
+                <h1>Buzón de Mensajes</h1>
+            </header>
+            <main>
+                <section class="seccion-mensajes">
+                    <div class="lista-conversaciones">
+                        <div class="search-section">
+                            <h2><i class="fas fa-search"></i> Buscar Usuario</h2>
+                            <form id="searchUserForm" class="search-form">
+                                <div class="search-input-container">
+                                    <input type="text" name="username" placeholder="Buscar usuario..." required>
+                                    <button type="submit"><i class="fas fa-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="chats-section">
+                            <h2><i class="fas fa-comments"></i> Conversaciones</h2>
+                            <div id="conversationList" class="chat-list"></div>
+                        </div>
+                    </div>
+
+                    <div class="ventana-conversacion">
+                        <div id="userResults" class="user-results"></div>
+
+                        <div class="chat-container">
+                            <div id="chatHeader" class="chat-header">
+                                <button id="boton-valoraciones" class="button-profile">Ver Perfil</button>
+                                <h2>Chat con <span id="chatUsername">Selecciona un chat para comenzar</span></h2>
+                                <button class="delete-chat-button" onclick="confirmDeleteChat()" style="display:none;">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+
+                            <div id="modalValoraciones" class="modalVal">
+                                <div class="contenido-modal">
+                                    <span id="cerrarModal" class="cerrar">&times;</span>
+                                    <h2 class="modalTitle">Valoraciones</h2>
+                                    <div id="valoraciones-lista"></div>
+                                </div>
+                            </div>
+                            
+                            <div id="messagesList" class="messages-list"></div>
+
+                            <form id="sendMessageForm" class="message-form" style="display:none;">
+                                <input type="hidden" name="receiverId" id="receiverId">
+                                <div class="message-input-container">
+                                    <textarea name="content" id="messageContent" placeholder="Escribe tu mensaje..." required></textarea>
+                                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascript/buzon.js"></script>
+</body>
+</html>

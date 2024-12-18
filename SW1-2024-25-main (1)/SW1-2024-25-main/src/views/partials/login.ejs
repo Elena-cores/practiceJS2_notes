@@ -1,0 +1,240 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link rel="stylesheet" href="/css/login.css">
+
+<!-- Overlay oscuro para el fondo cuando aparezca el panel de login -->
+<div id="overlay" class="overlay"></div>
+
+<!-- Login and Register Panel -->
+<div id="loginPanel" class="login-panel">
+    <!--Form sign up-->
+    <div class="form-container sign-up">
+        <form id="register-form">
+            <h1>Crear una cuenta</h1>
+            <div class="social-icons">
+                <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+            <span>o regístrate con tus datos</span>
+            <input name="name" type="text" placeholder="Nombre">
+            <input name="email" type="email" placeholder="Email">
+            <input name="faculty" type="text" placeholder="Facultad">
+            <input name="degree" type="text" placeholder="Grado">
+            <input name="password" type="password" placeholder="Password">
+            <button>Crear cuenta</button>
+        </form>
+    </div>
+    <!--Form sign in-->
+    <div class="form-container sign-in">
+        <form id="login-form">
+            <h1>Inicia sesión</h1>
+            <div class="social-icons">
+                <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+            <span>o usa tu email para iniciar sesión</span>
+            <input name="email" type="email" placeholder="Email">
+            <input name="password" type="password" placeholder="Password">
+            <a href="#" id="forgot-password-link">¿Olvidaste tu contraseña?</a>
+            <button type="submit">Iniciar sesión</button>
+        </form>
+    </div>
+    <div class="toggle-container">
+        <div class="toggle">
+            <div class="toggle-panel toggle-left">
+                <h1>¡Bienvenido de nuevo!</h1>
+                <p>Inicia sesion para acceder a todas las funciones</p>
+                <button id="login">Iniciar sesión</button>
+            </div>
+            <div class="toggle-panel toggle-right">
+                <h1>¡Bienvenido a Study<span class="success">Hub</span>!</h1>
+                <p>Regístrate para usar todas las funciones de la aplicación</p>
+                <button id="register">Registro</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Reset Password Panel -->
+<div id="reset-password-panel" class="login-panel hide"> 
+    <br><br><br>
+    <form id="reset-password-form">
+        <h1>Restablecer Contraseña</h1>
+        <input name="email" type="email" placeholder="Correo Electrónico" required>
+        <button type="button" id="send-code">Enviar Código</button>
+        <hr>
+        <input name="code" type="text" placeholder="Código" disabled>
+        <input name="newPassword" type="password" placeholder="Nueva Contraseña" disabled>
+        <input name="confirmPassword" type="password" placeholder="Confirmar Contraseña" disabled>
+        <button type="button" id="reset-btn" disabled>Restablecer Contraseña</button>
+    </form>
+</div>
+
+<script>
+    const loginPanel = document.getElementById('loginPanel');
+    const registerBtn = document.getElementById('register');
+    const loginBtn = document.getElementById('login');
+    
+    /* Lógica para la visulalización de los formularios */
+    //signUp -> se muestra formulario registro
+    registerBtn.addEventListener('click', () => {
+        loginPanel.classList.add("active");
+    });
+    //signIn -> se muestra formulario logIn
+    loginBtn.addEventListener('click', () => {
+        loginPanel.classList.remove("active");
+    });
+
+    // Funciones para abrir y cerrar el panel de login
+    function openLoginPanel() {
+        document.getElementById('overlay').classList.add('show');
+        document.getElementById('loginPanel').classList.add('show');
+        loginPanel.classList.remove("active");    
+    }
+    function openRegisterPanel() {
+        document.getElementById('overlay').classList.add('show');
+        document.getElementById('loginPanel').classList.add('show');
+        loginPanel.classList.add("active");
+    }
+    function closeLoginPanel() {
+        document.getElementById('overlay').classList.remove('show');
+        document.getElementById('loginPanel').classList.remove('show');
+        document.getElementById('reset-password-panel').classList.remove('show');
+    }
+    function logOut() { fetch('/auth/logout', { method: 'POST' })
+        .then(() => location.reload()); };
+
+    /* Lógica para el manejo de inicio de sesión o el registro */
+    // Login
+    const loginForm = document.getElementById('login-form');
+    loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const email = loginForm.email.value;
+        const password = loginForm.password.value;
+
+        const response = await fetch('/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+
+        const result = await response.json();
+        if (result.success) {
+            location.reload();
+        } else {
+            alert(result.error);
+        }
+    });
+
+    // Register
+    const registerForm = document.getElementById('register-form');
+    registerForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const username = registerForm.name.value;
+        const email = registerForm.email.value;
+        const faculty = registerForm.faculty.value;
+        const degree = registerForm.degree.value;
+        const password =registerForm.password.value;
+
+        const response = await fetch('/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, email, faculty, degree, password })
+        });
+
+        const result = await response.json();
+        if (result.success) {
+            location.reload();
+        } else {
+            alert(result.error);
+        }
+    });
+
+    /* Lógica para el manejo del reset password */
+    const resetPasswordPanel = document.getElementById('reset-password-panel');
+    const forgotPasswordLink = document.getElementById('forgot-password-link');
+    const resetPasswordForm = document.getElementById('reset-password-form');
+    const sendCodeButton = document.getElementById('send-code');
+    const resetButton = document.getElementById('reset-btn');
+
+    forgotPasswordLink.addEventListener('click', () => {
+        loginPanel.classList.remove('show');
+        resetPasswordPanel.classList.add('show');
+
+        resetPasswordForm.email.focus();
+        resetPasswordForm.email.removeAttribute('disabled');
+        sendCodeButton.removeAttribute('disabled');
+        console.log(resetPasswordForm.email);
+        console.log(resetPasswordForm.code);
+        console.log(resetPasswordForm.newPassword);
+        console.log(resetPasswordForm.email.addAttribute);
+        console.log(resetPasswordForm.code.addAttribute);
+        console.log(resetPasswordForm.newPassword.addAttribute);
+        resetPasswordForm.code.setAttribute('disabled','');
+        resetPasswordForm.newPassword.setAttribute('disabled','');
+        resetPasswordForm.confirmPassword.setAttribute('disabled','');
+    });
+
+    // Enviar código
+    sendCodeButton.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        email = resetPasswordForm.querySelector('input[name="email"]').value;
+        const response = await fetch('/auth/send-code', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
+        });
+
+        const result = await response.json();
+        if (result.success) {
+            alert(result.success);
+            resetPasswordForm.code.removeAttribute('disabled');
+            resetPasswordForm.newPassword.removeAttribute('disabled');
+            resetPasswordForm.confirmPassword.removeAttribute('disabled');
+            resetButton.removeAttribute('disabled');
+            resetPasswordForm.code.focus();
+            resetPasswordForm.email.setAttribute('disabled','');
+            sendCodeButton.setAttribute('disabled','');
+        } else {
+            alert(result.error);
+        }
+    });
+
+    // Restablecer contraseña
+    resetButton.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        const email = resetPasswordForm.email.value;
+        const code = resetPasswordForm.code.value;
+        const newPassword = resetPasswordForm.newPassword.value;
+        const confirmPassword = resetPasswordForm.confirmPassword.value;
+
+        if (newPassword !== confirmPassword) {
+            alert('Las contraseñas no coinciden');
+            return;
+        }
+
+        const response = await fetch('/auth/reset-password', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, code, newPassword })
+        });
+
+        const result = await response.json();
+        if (result.success) {
+            alert(result.success);
+            resetPasswordPanel.classList.remove('show');
+            loginPanel.classList.add('show');
+        } else {
+            alert(result.error);
+        }
+    });
+
+</script>
+

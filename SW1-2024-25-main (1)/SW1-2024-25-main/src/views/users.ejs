@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head') %>
+
+<body>
+  <div class="container">
+      <!-- Sidebar Section -->
+      <%- include('partials/leftBar') %>
+      <!-- End of Sidebar Section -->
+
+      <!-- Main Content -->
+      <main>
+          <h1>Usuarios</h1>
+          <br>
+          <h2>Lista de Usuarios</h2>
+          <div class="obj-list">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nombre de usuario</th>
+                  <th>Correo</th>
+                  <th>Alertas</th>
+                </tr>
+              </thead>
+              <tbody id="users">
+                <% users.forEach(user => { %>
+                  <tr>
+                    <td><%= user.username %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.alerts %></td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+            <a id="loadMoreUsers" class="btn btn-primary" data-skip="10">Ver más</a>
+
+          </div>
+      </main>
+
+      <!-- Right Section -->
+      <%- include('partials/rightBar') %>
+      <!-- End of right section -->
+  </div>
+
+</body>
+
+<script>
+  document.getElementById('loadMoreUsers').addEventListener('click', async function () {
+      const skip = parseInt(this.getAttribute('data-skip'), 10);
+      const response = await fetch(`/dashboard/users/more?skip=${skip}`);
+      const newUsers = await response.json();
+
+      const userList = document.getElementById('users');
+      newUsers.forEach(user => {
+          const userItem = document.createElement('tr');
+          userItem.innerHTML = `
+              <td>${user.username}</td>
+              <td>${user.email}</td>
+              <td>${user.alerts}</td>
+          `;
+          userList.appendChild(userItem);
+      });
+
+      this.setAttribute('data-skip', skip + 10);
+  });
+</script>
+
+
+</html>

@@ -1,0 +1,47 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ajustes de Usuario</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/ajustes.css">
+   
+</head>
+<body>
+    <div class="RecuadroPrincipalLogIn">
+        <img src="/images/LogoCampusSwap.png" alt="LogoIso" class="logo-img-login">
+        <h1 class="tituloLogIn">Ajustes de Usuario</h1>
+
+        <!-- Sección de información del usuario -->
+        <div class="userInfo">
+            <h2>Información Personal</h2>
+            <div class="info-container">
+                <div class="info-item">
+                    <label>Nombre:</label>
+                    <span><%= user.name %></span>
+                </div>
+                <div class="info-item">
+                    <label>Apellido:</label>
+                    <span><%= user.surname %></span>
+                </div>
+                <div class="info-item">
+                    <label>Usuario:</label>
+                    <span><%= user.username %></span>
+                </div>
+                <div class="info-item">
+                    <label>Email:</label>
+                    <span><%= user.email %></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botones de navegación -->
+        <div class="botones-navegacion">
+            <a href="/modificar" class="boton">Modificar Contraseña</a>
+            <div class="botones-lado-a-lado">
+                <a href="/perfil" class="boton botonvolver">Perfil</a>
+                <a href="/logout" class="boton botonlogout">Cerrar Sesión</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

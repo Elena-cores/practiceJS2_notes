@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css"> 
+    <link rel="stylesheet" href="/stylesheets/perfil.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
+    <title>Perfil - Campus Swap</title>
+</head>
+<body>
+
+    <%- include('partials/sidebar') %>
+
+    
+<div class="container">
+    <div class="main-content">
+
+        <header>
+            <h2>Tus productos</h2>
+        </header>
+
+        <div class="pestañas-productos">
+            <button class="venta-vendidos-boton" onclick="cambiarEstado('en-venta')">En venta</button>
+            <button class="venta-vendidos-boton" onclick="cambiarEstado('vendidos')">Vendidos</button> 
+            <input type="text" placeholder="Buscar productos..." class="barra-busqueda">
+            <a href="/listado" class="seguir-comprando-boton">
+                <img src="../images/Campus.png" alt="Seguir Comprando" class="logo-campus-swap">
+            </a>
+        </div>
+ 
+
+
+
+
+        <section class="seccion-productos h2">
+            
+  
+            <div id="product-list" class="product-list">
+            </div>
+            <div id="modal-mark-sold" class="modal">
+                <div class="modal-content">
+                    <h2>Marcar como vendido</h2>
+                    <p>¿Quién ha sido el comprador?</p>
+                    <input type="text" id="search-users" placeholder="Buscar usuario..." class="search-bar">
+                    <ul id="user-list" class="user-list">
+ 
+                    </ul>
+                    <div class="modal-actions">
+                        <button id="close-modal" class="btn btn-cancel">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+            <script src="/javascript/perfilList.js"></script>
+
+            <div class="botones">
+                <a href="/nuevaPublicacion?from=perfil" class="nuevo-anuncio-boton">
+                    <img src="../images/añadir.png" alt="Nuevo Anuncio" class="icon">
+                    <span>Añadir Producto</span>
+                </a>
+            </div>
+        </section>
+    </div>
+</div>
+
+</body>
+</html>

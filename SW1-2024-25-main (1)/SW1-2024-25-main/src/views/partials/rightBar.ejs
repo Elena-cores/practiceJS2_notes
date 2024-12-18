@@ -1,0 +1,118 @@
+
+<%- include('./login') %>
+
+<div class="right-section">
+    <div class="nav">
+        <button id="menu-btn">
+            <span class="material-icons-sharp">
+                menu
+            </span>
+        </button>
+        <div class="dark-mode">
+            <span class="material-icons-sharp active">
+                light_mode
+            </span>
+            <span class="material-icons-sharp">
+                dark_mode
+            </span>
+        </div>
+        
+        <div class="profile">
+            <% if (mainUser) { %> 
+                <div class="info">
+                    <p>Hola, <b><%= mainUser.username %></b></p>
+                    <% if (mainUser.admin) { %>
+                        <small class="text-muted">admin</small>
+                    <% } else { %>
+                        <small class="text-muted">user</small>
+                    <% } %>
+                </div>
+                <div class="profile-photo">
+                    <img src="<%= mainUser.imagelink %>" alt="Foto de perfil">
+                </div>
+                <a onclick="logOut()" href="javascript:void(0)" class="logout">Log out</a>
+            <% } else { %>
+                <div class="auth-buttons">
+                    <a onclick="openLoginPanel()" href="javascript:void(0);" class="login">Log in</a>
+                    <a onclick="openRegisterPanel()" href="javascript:void(0);" class="signup">Sign Up</a>
+                </div>
+            <% } %>
+        </div>
+        
+
+    </div>
+    <!-- End of Nav -->
+
+    <!-- Reminders -->
+    <% if (mainUser) { %>
+        <div class="else">
+            <a href="/">
+                <div class="user-profile">
+                    <div class="logo">
+                        <img src="../images/StudyHub_rectangular.jpg" alt="Company logo">
+                        <h2>CEU Study Hub</h2>
+                        <p>Tu mejor aliado en la uni</p>
+                    </div>
+                </div>
+            </a>
+
+            <div class="reminders">
+                <div class="header">
+                    <h2>Reminders</h2>
+                    <span class="material-icons-sharp">
+                        notifications_none
+                    </span>
+                </div>
+
+                <div class="notification">
+                    <div class="icon">
+                        <span class="material-icons-sharp">
+                            volume_up
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="info">
+                            <h3>Workshop</h3>
+                            <small class="text_muted">
+                                08:00 AM - 12:00 PM
+                            </small>
+                        </div>
+                        <span class="material-icons-sharp">
+                            more_vert
+                        </span>
+                    </div>
+                </div>
+
+                <div class="notification deactive">
+                    <div class="icon">
+                        <span class="material-icons-sharp">
+                            edit
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="info">
+                            <h3>Workshop</h3>
+                            <small class="text_muted">
+                                08:00 AM - 12:00 PM
+                            </small>
+                        </div>
+                        <span class="material-icons-sharp">
+                            more_vert
+                        </span>
+                    </div>
+                </div>
+
+                <div class="notification add-reminder">
+                    <div>
+                        <span class="material-icons-sharp">
+                            add
+                        </span>
+                        <h3>Add Reminder</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    <% } %>
+    <!-- End of Reminders -->
+</div>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/valoraciones.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Valoraciones - Campus Swap</title>
+    <script src="/javascript/scriptList.js" defer></script>
+</head>
+<body>
+    <%- include('partials/sidebar') %>
+
+    <div class="container">
+        <div class="main-content">
+            <header>
+                <h2>Valoraciones</h2>
+            </header>
+
+            <div class="filtros">
+                <button onclick="cargarValoraciones('comprado')" aria-label="Filtrar por comprado">Comprado</button>
+                <button onclick="cargarValoraciones('vendido')" aria-label="Filtrar por vendido">Vendido</button>
+                <button onclick="mostrarPopupNuevaValoracion()" aria-label="Nueva valoración">Nueva valoración</button>
+            </div>
+
+            <div class="mensaje" role="alert"></div>
+
+            <div class="valoraciones-list" aria-live="polite">
+            </div>
+        </div>
+    </div>
+
+    <div id="popup-nueva-valoracion" class="popup hidden" aria-hidden="true">
+        <div class="popup-content">
+            <button class="close-popup" onclick="cerrarPopup()" aria-label="Cerrar popup">&times;</button>
+            <h3>Compras no valoradas</h3>
+            <div class="lista-compras-no-valoradas">
+                <p>Cargando compras no valoradas...</p> 
+            </div>
+        </div>
+    </div>
+
+    <div id="popup-detalles-valoracion" class="popup hidden" aria-hidden="true">
+        <div class="popup-content">
+            <button class="close-popup" onclick="cerrarPopupDetalles()" aria-label="Cerrar popup detalles">&times;</button>
+            <h3>Completar Valoración</h3>
+            <form id="form-detalles-valoracion">
+                <label for="calificacion">Calificación (1-5):</label>
+                <input type="number" id="calificacion" name="calificacion" min="1" max="5" required aria-required="true" aria-label="Calificación entre 1 y 5">
+
+                <label for="comentario">Comentario:</label>
+                <textarea id="comentario" name="comentario" rows="4" required aria-required="true" aria-label="Escribe tu comentario"></textarea>
+
+                <input type="hidden" id="id-venta" name="id-venta">
+                <button type="submit" aria-label="Enviar valoración">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+  
+        <script src="/javascript/valoracionesList.js"></script>
+   
+</body>
+</html>

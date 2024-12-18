@@ -1,0 +1,62 @@
+<% if (showCookiePopup) { %>
+  <div id="cookie-popup">
+    <p>Usamos cookies para mejorar tu experiencia. ¿Aceptas nuestras cookies?</p>
+    <div>
+      <button id="accept-cookies">Aceptar</button>
+      <button id="reject-cookies">Rechazar</button>
+    </div>
+  </div>
+  <% } %>
+  
+  <%- include('partials/head') %>
+
+  <body>
+  
+    <div class="container">
+      <!-- Sidebar Section -->    
+      <%- include('partials/leftBar') %>
+      <!-- End of Sidebar Section -->
+  
+      <!-- Main Content -->
+      <main>
+        <h1>Bienvenido a CEU-Study<span class="success">Hub</span></h1>
+        <h2>Tu mejor aliado en la uni</h2>
+        <h3>¡Comienza a compartir apuntes!</h3>
+        
+        <div class="top-section" id="contactBar">
+          <% users.forEach(user => { %>
+            <a href="/resources"><div class="tutor">
+              <img src="<%= user.imagelink %>" alt="<%= user.username %>">
+              <p><%= user.username %></p>
+            </div></a>
+          <% }) %>
+        </div>
+        
+        <div class="main-content">
+            <div class="news-container" id="newsContainer">
+              <% news.forEach(single => { %>
+                <div class="box">
+                  <img src="<%= single.docroute %>" alt="<%= single.title %>">
+                  <div class="content-details">
+                    <h3><%= single.title %></h3>
+                  </div>
+                  <div class="buttons">
+                    <i class="fas fa-heart"><%= single.likes.length %></i>
+                    <i class="fas fa-arrow-right"></i>
+                    <i class="fas fa-save"></i>
+                  </div>
+                </div>
+              <% }) %>
+            </div>
+        </div>
+      </main>
+      <!-- End of Main Content -->
+    
+      <!-- Right Section -->
+      <%- include('partials/rightBar') %>
+      <!-- End of right section -->
+    
+    </div>
+  </body>
+  </html>
+  
