@@ -17,6 +17,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.locals.storeName = 'Embutidos León';
 // Configuración general
 //const storeName = "Embutidos León"; // Aquí defines el nombre de la tienda
 
