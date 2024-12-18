@@ -1,7 +1,9 @@
-<div id="cookie-banner">
-    <p>Este sitio web utiliza cookies para mejorar la experiencia del usuario.</p>
-    <button id="accept-cookies">Aceptar</button>
-    <button id="reject-cookies">Rechazar</button>
-</div>
-
-<script src="/scripts/cookies.js"></script>
+<% if (showCookiePopup) { %>
+    <div id="cookie-popup">
+      <p>Usamos cookies para mejorar tu experiencia. ¿Aceptas nuestras cookies?</p>
+      <div>
+        <button id="accept-cookies">Aceptar</button>
+        <button id="reject-cookies">Rechazar</button>
+      </div>
+    </div>
+    <% } %>

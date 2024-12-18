@@ -13,11 +13,11 @@ const restrictedRouter = require('./routes/restricted');
 const app = express();
 
 app.use((req, res, next) => {
-  res.locals.title = "Emtido León"; // Valor predeterminado para el título
+  res.locals.title = "Emtidos León"; // Valor predeterminado para el título
   next();
 });
 
-app.locals.storeName = 'Embutidos León';
+app.locals.storeName = 'EmbutidoDKSNFLeón';
 // Configuración general
 //const storeName = "Embutidos León"; // Aquí defines el nombre de la tienda
 
@@ -30,8 +30,6 @@ app.locals.storeName = 'Embutidos León';
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-
 
 
 app.use(logger('dev'));
@@ -56,6 +54,38 @@ app.use((req,res,next) => {
   next();
 });
 
+
+// Middleware para mostrar el popup de consentimiento de cookies
+app.use((req, res, next) => {
+  res.locals.showCookiePopup = !req.cookies.cookiePreferences;
+  next();
+});
+
+// Ruta para guardar las preferencias de cookies desde el frontend
+app.post("/set-cookie-preferences", (req, res) => {
+  const preferences = req.body; // Recoge las preferencias desde el frontend
+  res.cookie("cookiePreferences", JSON.stringify(preferences), {
+    httpOnly: true,
+    maxAge: 365 * 24 * 60 * 60 * 1000, // La cookie expirará en 1 año
+  });
+  res.json({ success: true });
+});
+
+app.get('/usuarios', (req, res) => {
+  res.render('usuarios', { title: 'Usuarios' });
+});
+
+app.get('/api/usuarios', (req, res) => {
+  const usuarios = [
+      { id: 1, nombre: 'Alberto', email: 'alberto@example.com' },
+      { id: 2, nombre: 'Ana', email: 'ana@example.com' },
+      { id: 3, nombre: 'Daniel', email: 'daniel@example.com' },
+      { id: 4, nombre: 'Silvia', email: 'silvia@example.com' },
+  ];
+  res.json(usuarios);
+});
+
+
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/tienda', tiendaRouter);
@@ -72,6 +102,7 @@ function restricted(req, res, next){
     res.redirect("login");
   }
 }
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
